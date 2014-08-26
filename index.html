@@ -42,9 +42,6 @@
 						<li><a href="#/summary" target="_top">Summary</a></li>
 						<li><a href="#/outlook" target="_top">Outlook</a></li>
 					</ol>
-					<ul>
-						<li>Some short side trips on how to use Gnuplot to analyse complex data.
-					</ul>
 				</div>
 			</div>
 
@@ -321,55 +318,6 @@
 				</div>
 			</div>
 
-			<div class="step slide" data-x="-1200" data-y="500" data-rotate="180">
-				<div class="head">
-					Gnuplot - energy range
-				</div>
-				<div class="contend">
-<pre class="prettyprint linenums" data-lang="gnuplot">
-set encoding utf8
-unset title
-unset key
-set sample 10000
-set terminal pngcairo size 1920,1080 enhanced \
-	font 'Verdana,40' dashed linewidth 4
-set xlabel "SpecMag [a.u.]"
-set xrange [100:350]
-set ylabel "energy range [eV]"
-set yrange [0:*]
-f(x) = a*x**b
-a = 0; b = -1;
-fit f(x) "SpecMag.dat" using 1:2 via a,b
-set label sprintf("f(x) = %.0f·x^{%.2f}", a, b) at 200,200
-set output "../Bilder/SpecMag.png"
-plot "" using 1:2 with points pointsize 4, f(x) with lines
-</pre>
-				</div>
-			</div>
-
-			<div class="step slide" data-x="-2400" data-y="500" data-rotate="180">
-				<div class="head">
-					Gnuplot - lateral width
-				</div>
-				<div class="contend">
-<pre class="prettyprint linenums" data-lang="gnuplot">
-...
-unset label
-set ylabel "width of the ZLP [px]"
-set yrange [0:4096]
-f(x) = a*x**b
-a = 3; b = 1;
-fit f(x) "" using 1:3:3 via a,b
-set label sprintf("f(x) = %.0f·x^{%.2f}", a, b) at 200,2048
-set arrow from 315,0 to 315,4096 nohead linecolor rgb "red"
-set label "max. SpecMag -> " at 315,3500 right
-set output "../Bilder/SpecMag_widthZLP.png"
-plot "" using 1:3 with points pointsize 4, \
-	f(x) with lines
-</pre>
-				</div>
-			</div>
-
 <!--@NPPBookmarkEFA-->
 			<div id="EFA" class="step sectionTitle" data-x="8400" data-y="1500" data-z="1">
 				<h1>Zeiss WinTEM - Energy Filter Align (EFA)</h1>
@@ -514,119 +462,6 @@ plot "" using 1:3 with points pointsize 4, \
 				</div>
 			</div>
 
-			<div class="step slide" data-x="-1200" data-y="2000" data-rotate="180">
-				<div class="head">
-					Gnuplot - 3D-visualization
-				</div>
-				<div class="contend">
-<pre class="prettyprint linenums" data-lang="gnuplot">
-...
-set isosample 16
-temp_table = temp_folder."/temp.txt"
-set table temp_table
-set xrange [*:*]
-set yrange [*:*]
-input_filename(n) = sprintf("../".input_prefix."%d.txt", n)
-splot for [i=index_start:index_stop:index_inc] input_filename(i) \
-	using (bin*$4-cam_width/2):(bin*$2-cam_width/2):(bin*$6) with points
-unset table
-set output temp_folder."/width.png"
-plot for [i=index_start:index_stop:index_inc] input_filename(i) \
-	using 1:(bin*$6) notitle
-z_min = 10*floor(GPVAL_Y_MIN/10)
-z_max = 10*ceil(GPVAL_Y_MAX/10)
-...
-</pre>
-				</div>
-			</div>
-
-			<div class="step slide" data-x="-2400" data-y="2000" data-rotate="180">
-				<div class="head">
-					Gnuplot - 3D-visualization
-				</div>
-				<div class="contend">
-<pre class="prettyprint linenums" data-lang="gnuplot">
-...
-set zrange [z_min:z_max]
-set xyplane at z_min
-set title "3D View with f(x,y) - ".head
-output_file = output_folder."3_3D_f(x,y)_".output.".png"
-set output output_file
-f(x,y) = a00 + a10*x + a20*x**2 + a01*y + a11*x*y + a21*x**2*y + a02*y**2 \
-	+ a12*x*y**2 + a22*x**2*y**2
-a00 = 1.0; a10 = 1.0; a20 = 1.0;
-a01 = 1.0; a11 = 1.0; a21 = 1.0;
-a02 = 1.0; a12 = 1.0; a22 = 1.0;
-fit f(x,y) temp_table using ($1):($2):($3):(1) \
-	via a00, a10, a20, a01, a11, a21, a02, a12, a22
-splot f(x,y/disp_y) title "f(x,y)" with lines linestyle 3,\
-temp_table using ($1):($2*disp_y):(f($1,$2)) title "f(x,y)" with lines linestyle 2, \
-temp_table using ($1):($2*disp_y):($3) title "Messwerte" with points linestyle 1
-...
-</pre>
-				</div>
-			</div>
-
-			<div class="step slide" data-x="-3600" data-y="2000" data-rotate="180">
-				<div class="head">
-					Gnuplot - 3D-visualization
-				</div>
-				<div class="contend">
-<pre class="prettyprint linenums" data-lang="gnuplot">
-...
-set fit logfile "fit_".output.".txt"
-set print "summery_".output.".txt"
-print "f(x,y) = a00 + a10*x + a20*x**2 + a01*y + a11*x*y + a21*x**2*y \
-	+ a02*y**2 + a12*x*y**2 + a22*x**2*y**2"
-printstr(M, N) = \
-	sprintf('print "a%d%d = ", a%d%d, " /pm ", a%d%d_err', M, N, M, N, M, N)
-do for [i=0:2] {
-	do for [j=0:2] {
-		eval(printstr(j, i))
-	}
-}
-...
-</pre>
-				</div>
-			</div>
-
-			<div class="step slide" data-x="-4800" data-y="2000" data-z="1000" data-rotate="180">
-				<div class="head">
-					Aberrations - Heatmap-visualization
-				</div>
-				<div class="contend">
-					<dt><img height="625px" src="Bilder/Heat-Map_f(x,y)_SpecMag=315_QSinK7=0_225eV.png"/></dt>
-					<dd>Draft version! The shown pairs of borders will be replaced soon.</dd>
-				</div>
-			</div>
-
-			<div class="step slide" data-x="-4800" data-y="2000" data-rotate="180">
-				<div class="head">
-					Gnuplot - Heatmap-visualization
-				</div>
-				<div class="contend">
-<pre class="prettyprint linenums" data-lang="gnuplot">
-...
-set view map
-set palette defined (0 '#7f0000', \
-	...
-	8 '#000090')
-set cblabel "spectrum width [px]"
-set cbrange [z_min:z_max]
-set table table_f
-splot f(x,y) with points
-unset table
-set output output_file
-plot table_f using ($1):($2*disp_y):($3) with image , \
-for [i=index_start:index_stop:index_inc] input_filename(i) \
-	using (bin*$4-2048):((bin*$2-2048)*disp_y) notitle with points linestyle 1 ,\
-for [i=index_start:index_stop:index_inc] input_filename(i) \
-	using (bin*$5-2048):((bin*$2-2048)*disp_y) notitle with points linestyle 1
-...
-</pre>
-				</div>
-			</div>
-
 			<div class="step slide" data-x="3600" data-y="2000">
 				<div class="head">
 					Aberrations
@@ -674,57 +509,6 @@ for [i=index_start:index_stop:index_inc] input_filename(i) \
 				<div class="contend">
 					<dt><img height="600px" src="Bilder/Borders_SpecMag=315_QSinK7=0_225eV.png"/></dt>
 					<dd style="margin-top: -20px">$$f_n(\Delta E) = \sum^2_{i,j=0}a_{ij}\cdot y_n^j\cdot \Delta E^i$$</dd>
-				</div>
-			</div>
-
-			<div class="step slide" data-x="-6000" data-y="2000" data-rotate="180">
-				<div class="head">
-					Gnuplot - 2D-visualization
-				</div>
-				<div class="contend">
-<pre class="prettyprint linenums" data-lang="gnuplot">
-...
-set terminal unknown
-set table temp_folder."/borders.txt"
-set xrange [-2048:2048]
-set yrange [*:*]
-plotstr3D(N) = sprintf('splot input_filename(%d) \
-	using (bin*$2-2048):(bin*$4-2048):(f%dL(0)) with points, \
-	input_filename(%d) using (bin*$2-2048):(bin*$5-2048):(f%dR(0)) \
-	with points', N, N, N, N)
-plotstr3DL(N) = sprintf('replot input_filename(%d) \
-	using (bin*$2-2048):(bin*$4-2048):(f%dL(0)) with points', N, N)
-plotstr3DR(N) = sprintf('replot input_filename(%d) \
-	using (bin*$2-2048):(bin*$5-2048):(f%dR(0)) with points', N, N)
-eval(plotstr3D(index_start))
-...
-</pre>
-				</div>
-			</div>
-
-			<div class="step slide" data-x="-7200" data-y="2000" data-rotate="180">
-				<div class="head">
-					Gnuplot - 2D-visualization
-				</div>
-				<div class="contend">
-<pre class="prettyprint linenums" data-lang="gnuplot">
-...
-do for [i=index_start+index_inc:index_stop:index_inc] {
-	eval(plotstr3DL(i))
-	eval(plotstr3DR(i))
-}
-replot
-...
-fit f(x,y) table3D using ($1):($3):(stringcolumn(4) eq "u"?1/0:$2):(1) \
-	via a00, a10, a20, a01, a11, a21, a02, a12, a22
-set table temp_folder."/field.txt"
-...
-plot table_field using ($2):($1*disp_y) title "f(x,y)" with lines \
-	linestyle 3 linewidth line_width-1, \
-table3D using (stringcolumn(4) eq "u"?1/0:$2):($1*disp_y) \
-	title "&{xxx}Messwerte" with points
-...
-</pre>
 				</div>
 			</div>
 
