@@ -1,425 +1,578 @@
 <!doctype html>
+
+<!--
+	My presentation is based on the impress.js-demo by Bartek Szopka. I didn't remove the comments he made, to make it more easy to understand how the presentation is created.
+	I have to thank Bartek Szopka for creating such a great tool. Even without much knowledge about HTML, CSS and JavaScript, I was able to create a niche looking presentation.
+	
+		Michael Entrup
+-->
+
+<!--
+
+    Welcome to the light side of the source, young padawan.
+
+    One step closer to learn something interesting you are...
+
+                               ____                  
+                            _.' :  `._               
+                        .-.'`.  ;   .'`.-.           
+               __      / : ___\ ;  /___ ; \      __  
+             ,'_ ""=-.:__;".-.";: :".-.":__;.-="" _`,
+             :' `.t""=-.. '<@.`;_  ',@:` ..-=""j.' `;
+                  `:-.._J '-.-'L__ `-.-' L_..-;'     
+                    "-.__ ;  .-"  "-.  : __.-"       
+                        L ' /.======.\ ' J           
+                         "-.   "__"   .-"            
+                        __.l"-:_JL_;-";.__           
+                     .-j/'.;  ;""""  / .'\"-.        
+                   .' /:`. "-.:     .-" .';  `.      
+                .-"  / ;  "-. "-..-" .-"  :    "-.   
+             .+"-.  : :      "-.__.-"      ;-._   \  
+             ; \  `.; ;                    : : "+. ; 
+             :  ;   ; ;                    : ;  : \: 
+             ;  :   ; :                    ;:   ;  : 
+            : \  ;  :  ;                  : ;  /  :: 
+            ;  ; :   ; :                  ;   :   ;: 
+            :  :  ;  :  ;                : :  ;  : ; 
+            ;\    :   ; :                ; ;     ; ; 
+            : `."-;   :  ;              :  ;    /  ; 
+             ;    -:   ; :              ;  : .-"   : 
+             :\     \  :  ;            : \.-"      : 
+              ;`.    \  ; :            ;.'_..-=  / ; 
+              :  "-.  "-:  ;          :/."      .'  :
+               \         \ :          ;/  __        :
+                \       .-`.\        /t-""  ":-+.   :
+                 `.  .-"    `l    __/ /`. :  ; ; \  ;
+                   \   .-" .-"-.-"  .' .'j \  /   ;/ 
+                    \ / .-"   /.     .'.' ;_:'    ;  
+                     :-""-.`./-.'     /    `.___.'   
+                           \ `t  ._  /               
+                            "-.t-._:'                
+
+-->
+
+<!--
+    
+    So you'd like to know how to use impress.js?
+    
+    You've made the first, very important step - you're reading the source code.
+    And that's how impress.js presentations are built - with HTML and CSS code.
+    
+    Believe me, you need quite decent HTML and CSS skills to be able to use impress.js effectively.
+    And what is even more important, you need to be a designer, too, because there are no default
+    styles for impress.js presentations, there is no default or automatic layout for them.
+    
+    You need to design and build it by hand.
+    
+    So...
+    
+    Would you still like to know how to use impress.js?
+    
+-->
+
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=1280" />
-        <title>Spatially resolved EELS with an in-column Omega filter - characterization of energy filter aberrations and their correction by image processing</title>
-        <link href="css/styles.css" rel="stylesheet"></script>
-		<script type="text/javascript"
-			src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-		</script>
-		<base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
-    </head>
-    <body class="impress-not-supported">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1280" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Spatially resolved EELS with an in-column Omega filter - characterization of energy filter aberrations and their correction by image processing</title>
+    
+    <meta name="description" content="Spatially resolved EELS with an in-column Omega filter - characterization of energy filter aberrations and their correction by image processing" />
+    <meta name="author" content="Michael Entrup" />
 
-		<div id="impress">
+    <!--
+        
+        Impress.js doesn't depend on any external stylesheet. Script adds all styles it needs for
+        presentation to work.
+        
+        This style below contains styles only for demo presentation. Browse it to see how impress.js
+        classes are used to style presentation steps, or how to apply fallback styles, but I don't want
+        you to use them directly in your presentation.
+        
+        Be creative, build your own. We don't really want all impress.js presentations to look the same,
+        do we?
+        
+        When creating your own presentation get rid of this file. Start from scratch, it's fun!
+        
+    -->
+    <link href="css/styles.css" rel="stylesheet" />
+	<base target="_blank"> <!-- This amazingness opens all links in a new tab. -->    
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+</head>
 
-			<div id="start" class="step slide" data-x="0" data-y="0">
-				<div class="contend">
-					<hgroup>
-						<p id="title">Spatially resolved EELS (SR-EELS)<br />with an in-column Omega filter - characterization of energy filter aberrations<br />and their correction by image processing</p>
-						<p id="name">Michael Entrup</p>
-						<p id="date">06.06.2014</p>
-					</hgroup>
-				</div>
+<!--
+    
+    Body element is used by impress.js to set some useful class names, that will allow you to detect
+    the support and state of the presentation in CSS or other scripts.
+    
+    First very useful class name is `impress-not-supported`. This class means, that browser doesn't
+    support features required by impress.js, so you should apply some fallback styles in your CSS.
+    It's not necessary to add it manually on this element. If the script detects that browser is not
+    good enough it will add this class, but keeping it in HTML means that users without JavaScript
+    will also get fallback styles.
+    
+    When impress.js script detects that browser supports all required features, this class name will
+    be removed.
+    
+    The class name on body element also depends on currently active presentation step. More details about
+    it can be found later, when `hint` element is being described.
+    
+-->
+<body class="impress-not-supported">
+
+<!--
+    For example this fallback message is only visible when there is `impress-not-supported` class on body.
+-->
+	<div class="fallback-message">
+		<p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+		<p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+	</div>
+
+<!--
+    
+    Now that's the core element used by impress.js.
+    
+    That's the wrapper for your presentation steps. In this element all the impress.js magic happens.
+    It doesn't have to be a `<div>`. Only `id` is important here as that's how the script find it.
+    
+    You probably won't need it now, but there are some configuration options that can be set on this element.
+    
+    To change the duration of the transition between slides use `data-transition-duration="2000"` giving it
+    a number of ms. It defaults to 1000 (1s).
+    
+    You can also control the perspective with `data-perspective="500"` giving it a number of pixels.
+    It defaults to 1000. You can set it to 0 if you don't want any 3D effects.
+    If you are willing to change this value make sure you understand how CSS perspective works:
+    https://developer.mozilla.org/en/CSS/perspective
+    
+    But as I said, you won't need it for now, so don't worry - there are some simple but interesting things
+    right around the corner of this tag ;)
+    
+-->
+	<div id="impress">
+
+    <!--
+        
+        Here is where interesting thing start to happen.
+        
+        Each step of the presentation should be an element inside the `#impress` with a class name
+        of `step`. These step elements are positioned, rotated and scaled by impress.js, and
+        the 'camera' shows them on each step of the presentation.
+        
+        Positioning information is passed through data attributes.
+        
+        In the example below we only specify x and y position of the step element with `data-x="-1000"`
+        and `data-y="-1500` attributes. This means that **the center** of the element (yes, the center)
+        will be positioned in point x = -1000px and y = -1500px of the presentation 'canvas'.
+        
+        It will not be rotated or scaled.
+        
+    -->
+		<div id="start" class="step slide" data-x="0" data-y="0">
+			<div class="contend">
+				<hgroup>
+					<p id="title">Spatially resolved EELS (SR-EELS)<br />with an in-column Omega filter - characterization of energy filter aberrations<br />and their correction by image processing</p>
+					<p id="name">Michael Entrup</p>
+				</hgroup>
 			</div>
+		</div>
 
 <!--@NPPBookmarktoc-->
-			<div id="toc" class="step slide" data-x="1200" data-y="0">
-				<div class="head">
-					list of contents
-				</div>
-				<div class="contend">
-					<ol>
-						<li><a href="#/impress.js" target="_top">impress.js - A short introduction</a></li>
-						<li><a href="#/sr-eels" target="_top">SR-EELS - An introduction</a></li>
-							<ol>
-								<li><a href="#/SpecMag" target="_top">SpecMag - Some quantitative values</a></li>
-								<li><a href="#/EFA" target="_top">Zeiss WinTEM - Energy Filter Align (EFA)</a></li>
-							</ol>
-						<li><a href="#/aberrations" target="_top">Aberrations</a></li>
-						<li><a href="#/correction" target="_top">Correction by image processing</a></li>
-						<li><a href="#/summary" target="_top">Summary</a></li>
-						<li><a href="#/outlook" target="_top">Outlook</a></li>
-					</ol>
-				</div>
+		<div id="toc" class="step slide" data-x="1200" data-y="0">
+			<div class="head">
+				list of contents
 			</div>
+			<div class="contend">
+				<ol>
+					<li><a href="#/impress.js" target="_top">impress.js - A short introduction</a></li>
+					<li><a href="#/sr-eels" target="_top">SR-EELS - An introduction</a></li>
+						<ol>
+							<li><a href="#/SpecMag" target="_top">SpecMag - Some quantitative values</a></li>
+							<li><a href="#/EFA" target="_top">Zeiss WinTEM - Energy Filter Align (EFA)</a></li>
+						</ol>
+					<li><a href="#/aberrations" target="_top">Aberrations</a></li>
+					<li><a href="#/correction" target="_top">Correction by image processing</a></li>
+					<li><a href="#/summary" target="_top">Summary</a></li>
+					<li><a href="#/outlook" target="_top">Outlook</a></li>
+				</ol>
+			</div>
+		</div>
 
 <!--@NPPBookmarkimpress.js-->
-			<div id="impress.js" class="step sectionTitle" data-x="0" data-y="-1000" data-z="1">
-				<h1>impress.js - A short introduction</h1>
-			</div>
+		<div id="impress.js" class="step sectionTitle" data-x="0" data-y="-1000" data-z="1">
+			<h1>impress.js - A short introduction</h1>
+		</div>
 
-			<div class="slide step" data-x="0" data-y="-1000">
-				<div class="head">
-					impress.js
-				</div>
-				<div class="contend">
-					<p>This presentation was created by using <a href="https://github.com/bartaz/impress.js/">impress.js</a>.</p>
-					<div class="box">
-						<h3>What is impress.js</h3>
-						<p>
-							It's a presentation framework based on the power of CSS3 transforms and transitions in modern browsers and inspired by the idea behind prezi.com.
-						<p>
-						<p class="cite">[https://github.com/bartaz/impress.js]</p>
-					</div>
-					<p>About impress.js:</p>
-					<ul>
-						<li>You only need a browser and a text editor</li>
-						<li>Uses HTML, CSS and JavaScript</li>
-						<li>Not limited to slides</li>
-						<li>Place your contend in a 3D canvas</li>
-					</ul>
-				</div>
+		<div class="slide step" data-x="0" data-y="-1000">
+			<div class="head">
+				impress.js
 			</div>
-
-			<div class="step" data-x="1200" data-y="-1000" data-z="1000" data-rotate-x="-45">
+			<div class="contend">
+				<p>This presentation was created by using <a href="https://github.com/bartaz/impress.js/">impress.js</a>.</p>
 				<div class="box">
-					<h3>A 3D canvas</h3>
-					<ul>
-						<li>Set x-, y- and z-coordinates</li>
-						<li>Rotate around all 3 axes</li>
-						<li>Zoom in and out</li>
-					</ul>
+					<h3>What is impress.js</h3>
+					<p>
+						It's a presentation framework based on the power of CSS3 transforms and transitions in modern browsers and inspired by the idea behind prezi.com.
+					<p>
+					<p class="cite">[https://github.com/bartaz/impress.js]</p>
 				</div>
+				<p>About impress.js:</p>
+				<ul>
+					<li>You only need a browser and a text editor</li>
+					<li>Uses HTML, CSS and JavaScript</li>
+					<li>Not limited to slides</li>
+					<li>Place your contend in a 3D canvas</li>
+				</ul>
 			</div>
+		</div>
 
-			<div class="slide step" data-x="2400" data-y="-1000">
-				<div class="head">
-					More examples using impress.js
-				</div>
-				<div class="contend">
-					<ul>
-						<li><a href="http://bartaz.github.com/meetjs/css3d-summit">CSS 3D transforms</a> from <a href="http://summit.meetjs.pl">meet.js summit</a> by <a href="http://twitter.com/bartaz">@bartaz</a></li>
-						<li><a href="http://manuelbaronetti.com.ar/demo-impress/en">Testing impress.js</a> by <a href="http://twitter.com/manursio">@manursio</a></li>
-						<li><a href="http://www.hashdog.com/brochure">Hashdog: Software Factory - Brochure</a> by <a href="http://www.hashdog.com/brochure">Franco Alvarez</a></li>
-						<li><a href="http://www.innovativephp.com/demo/impress-js-demos/chapter5/#/about">Building a Personal Website with impress.js</a> by <a href="http://link.packtpub.com/4pHfi7">Rakhitha Nimesh</a></li>
-						<li><a href="http://www.jgog.in">jgog.in</a> Website/Portfolio of <a href="https://github.com/jenil27">Jenil Gogari</a>, designer from Mumbai, India</li>
-					</ul>
-					<p>All links will open in a new tab. So have a look at all the impressive examples.</p>
-				</div>
+		<div class="step" data-x="1200" data-y="-1000" data-z="1000" data-rotate-x="-45">
+			<div class="box">
+				<h3>A 3D canvas</h3>
+				<ul>
+					<li>Set x-, y- and z-coordinates</li>
+					<li>Rotate around all 3 axes</li>
+					<li>Zoom in and out</li>
+				</ul>
 			</div>
+		</div>
 
-			<div class="step slide" data-x="3600" data-y="-1000">
-				<div class="head">
-					LaTeX-formulas
-				</div>
-				<div class="contend">
-					<p>It is even possible to use LaTeX code to create formulas.
-					<div class="box">
-						<h3>Here is an example:</h3>
-						<p>When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are</p>
-						<p>$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$</p>
-					</div>
-					<p>This formulas are created by <a href="http://www.mathjax.org/">MathJax</a>.</p>
-				</div>
+		<div class="slide step" data-x="2400" data-y="-1000">
+			<div class="head">
+				More examples using impress.js
 			</div>
+			<div class="contend">
+				<ul>
+					<li><a href="http://bartaz.github.com/meetjs/css3d-summit">CSS 3D transforms</a> from <a href="http://summit.meetjs.pl">meet.js summit</a> by <a href="http://twitter.com/bartaz">@bartaz</a></li>
+					<li><a href="http://manuelbaronetti.com.ar/demo-impress/en">Testing impress.js</a> by <a href="http://twitter.com/manursio">@manursio</a></li>
+					<li><a href="http://www.hashdog.com/brochure">Hashdog: Software Factory - Brochure</a> by <a href="http://www.hashdog.com/brochure">Franco Alvarez</a></li>
+					<li><a href="http://www.innovativephp.com/demo/impress-js-demos/chapter5/#/about">Building a Personal Website with impress.js</a> by <a href="http://link.packtpub.com/4pHfi7">Rakhitha Nimesh</a></li>
+					<li><a href="http://www.jgog.in">jgog.in</a> Website/Portfolio of <a href="https://github.com/jenil27">Jenil Gogari</a>, designer from Mumbai, India</li>
+				</ul>
+				<p>All links will open in a new tab. So have a look at all the impressive examples.</p>
+			</div>
+		</div>
 
-			<div class="step slide" data-x="4800" data-y="-1000">
-				<div class="head">
-					Source-code with syntax highlighting
+		<div class="step slide" data-x="3600" data-y="-1000">
+			<div class="head">
+				LaTeX-formulas
+			</div>
+			<div class="contend">
+				<p>It is even possible to use LaTeX code to create formulas.
+				<div class="box">
+					<h3>Here is an example:</h3>
+					<p>When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are</p>
+					<p>$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$</p>
 				</div>
-				<div class="contend">
-					<pre class="prettyprint linenums" data-lang="javascript">
+				<p>This formulas are created by <a href="http://www.mathjax.org/">MathJax</a>.</p>
+			</div>
+		</div>
+
+		<div class="step slide" data-x="4800" data-y="-1000">
+			<div class="head">
+				Source-code with syntax highlighting
+			</div>
+			<div class="contend">
+				<pre class="prettyprint linenums" data-lang="javascript">
 &lt;script type='text/javascript'&gt;
-  // Say hello world until the user starts questioning
-  // the meaningfulness of their existence.
-  function helloWorld(world) {
-	for (var i = 42; --i &gt;= 0;) {
-	  alert('Hello ' + String(world));
-	}
-  }
+// Say hello world until the user starts questioning
+// the meaningfulness of their existence.
+function helloWorld(world) {
+for (var i = 42; --i &gt;= 0;) {
+  alert('Hello ' + String(world));
+}
+}
 &lt;/script&gt;
 &lt;style&gt;
-  p { color: pink }
-  b { color: blue }
-  u { color: 'umber' }
+p { color: pink }
+b { color: blue }
+u { color: 'umber' }
 &lt;/style&gt;</pre>
-					<p><a href="http://code.google.com/p/google-code-prettify/wiki/GettingStarted">google-code-prettify</a> is used to create this output.</p>
-				</div>
+				<p><a href="http://code.google.com/p/google-code-prettify/wiki/GettingStarted">google-code-prettify</a> is used to create this output.</p>
 			</div>
+		</div>
 
-			<div class="step slide" data-x="6000" data-y="-1000">
-				<div class="head">
-					Include a website using an iframe
-				</div>
-				<div class="contend">
-					<iframe size="100%" src='http://www.fiji.sc'></iframe>
-				</div>
+		<div class="step slide" data-x="6000" data-y="-1000">
+			<div class="head">
+				Include a website using an iframe
 			</div>
+			<div class="contend">
+				<iframe size="100%" src='http://www.fiji.sc'></iframe>
+			</div>
+		</div>
 
-			<div class="step slide" data-x="7200" data-y="-1000">
-				<div class="head">
-					You can even watch a video
-				</div>
-				<div class="contend">
-					<iframe src="http://www.youtube.com/embed/CxmvFYp8EtU" width="640px" height="400px"></iframe>
-					<p style="width:640px; margin:auto;">To bad there is no video about the Zeiss Libra 200FE with an in-column Omega filter on <a href="http://www.youtube.com">youtube</a>.</p>
-				</div>
+		<div class="step slide" data-x="7200" data-y="-1000">
+			<div class="head">
+				You can even watch a video
 			</div>
+			<div class="contend">
+				<iframe src="http://www.youtube.com/embed/CxmvFYp8EtU" width="640px" height="400px"></iframe>
+				<p style="width:640px; margin:auto;">To bad there is no video about the Zeiss Libra 200FE with an in-column Omega filter on <a href="http://www.youtube.com">youtube</a>.</p>
+			</div>
+		</div>
 
 <!--@NPPBookmarkSR-EELS-->
-			<div id="sr-eels" class="step sectionTitle" data-x="0" data-y="1000" data-z="1">
-				<h1>SR-EELS - An introduction</h1>
-			</div>
+		<div id="sr-eels" class="step sectionTitle" data-x="0" data-y="1000" data-z="1">
+			<h1>SR-EELS - An introduction</h1>
+		</div>
 
-			<div class="step slide" data-x="0" data-y="1000">
-				<div class="head">
-					How to use an imaging filter
-				</div>
-				<div class="contend">
-					<div class="box">
-						<h3>L. Reimer, I. Fromm and R. Rennekamp</h3>
-						<p>
-							We call those coordinates "dispersive" for which the one- or two-dimensional intensity distribution is recorded and use different symbols for the "selective" windows.
-						</p>
-						<p class="cite">[Reimer1989]</p>
-					</div>
-					<img src="Bilder/omega.png" height="300px" />
-				</div>
+		<div class="step slide" data-x="0" data-y="1000">
+			<div class="head">
+				How to use an imaging filter
 			</div>
-
-			<div class="step slide" data-x="1200" data-y="1000">
-				<div class="head">
-					Dispersive coordinates and selective windows
+			<div class="contend">
+				<div class="box">
+					<h3>L. Reimer, I. Fromm and R. Rennekamp</h3>
+					<p>
+						We call those coordinates "dispersive" for which the one- or two-dimensional intensity distribution is recorded and use different symbols for the "selective" windows.
+					</p>
+					<p class="cite">[Reimer1989]</p>
 				</div>
-				<div class="contend">
-					<table class="styled" style="font-size: 20px">
-						<thead><td>Dispersive coordinates</td><td>Selective windows</td></thead>
-						<tr><td rowspan="3">x, y (space coordinates)</td><td>ΔA (specimen area)</td></tr>
-						<tr><td>d (diameter of selected area)</td></tr>
-						<tr><td>Δy (width of slit parallel to x)</td></tr>
-						<tr><td>ΔE (energy loss)</td><td>ΔW (energy window)</td></tr>
-					</table>
-					<table class="styled" style="font-size: 20px">
-						<thead><td>Mode</td><td>I (dispersive/selective)</td></thead>
-						<tr><td>ESI (electron spectroscopic imaging)</td><td>I(x, y/ΔW)</td></tr>
-						<tr><td colspan="2">EELS (electron energy-loss spectroscopy)</td></tr>
-						<tr><td class="right">Spectrum mode</td><td>I(ΔE/ΔA)</td></tr>
-						<tr><td class="right">Space-dispersive mode</td><td>I(x, ΔE/Δy)</td></tr>
-					</table>
-				</div>
+				<img src="Bilder/omega.png" height="300px" />
 			</div>
+		</div>
 
-			<div class="step slide" data-x="2400" data-y="1000">
-				<div class="head">
-					ESI data cube
-				</div>
-				<div class="contend">
-					<img size="100%" src="Daten/Cube_ESI.svg" />
-				</div>
+		<div class="step slide" data-x="1200" data-y="1000">
+			<div class="head">
+				Dispersive coordinates and selective windows
 			</div>
+			<div class="contend">
+				<table class="styled" style="font-size: 20px">
+					<thead><td>Dispersive coordinates</td><td>Selective windows</td></thead>
+					<tr><td rowspan="3">x, y (space coordinates)</td><td>ΔA (specimen area)</td></tr>
+					<tr><td>d (diameter of selected area)</td></tr>
+					<tr><td>Δy (width of slit parallel to x)</td></tr>
+					<tr><td>ΔE (energy loss)</td><td>ΔW (energy window)</td></tr>
+				</table>
+				<table class="styled" style="font-size: 20px">
+					<thead><td>Mode</td><td>I (dispersive/selective)</td></thead>
+					<tr><td>ESI (electron spectroscopic imaging)</td><td>I(x, y/ΔW)</td></tr>
+					<tr><td colspan="2">EELS (electron energy-loss spectroscopy)</td></tr>
+					<tr><td class="right">Spectrum mode</td><td>I(ΔE/ΔA)</td></tr>
+					<tr><td class="right">Space-dispersive mode</td><td>I(x, ΔE/Δy)</td></tr>
+				</table>
+			</div>
+		</div>
 
-			<div class="step" data-x="2400" data-y="1000" data-z="-1">
+		<div class="step slide" data-x="2400" data-y="1000">
+			<div class="head">
+				ESI data cube
+			</div>
+			<div class="contend">
+				<img size="100%" src="Daten/Cube_ESI.svg" />
+			</div>
+		</div>
+
+		<div class="step overlay" data-x="2400" data-y="1000" data-z="1">
+			<ul>
+				<li>high number of lateral channels</li>
+				<li>limited number of energy channels</li>
+				<li>limited energy resolution</li>
+			</ul>
+		</div>
+
+		<div class="step slide" data-x="3600" data-y="1000">
+			<div class="head">
+				EELS data cube
+			</div>
+			<div class="contend">
+				<img size="100%" src="Daten/Cube_EELS.svg" />
+			</div>
+		</div>
+		<div class="step overlay" data-x="3600" data-y="1000" data-z="1">
+			<ul>
+				<li>high number of energy channels</li>
+				<li>high energy resolution</li>
+				<li>limited number of lateral channels</li>
+				<li>lateral resolution can be very high</li>
+			</ul>
+		</div>
+
+		<div class="step slide" data-x="4800" data-y="1000">
+			<div class="head">
+				SR-EELS data cube
+			</div>
+			<div class="contend">
+				<img size="100%" src="Daten/Cube_SR-EELS.svg" />
+			</div>
+		</div>
+		<div class="step overlay" data-x="4800" data-y="1000" data-z="1">
+			<ul>
+				<li>high number of energy channels</li>
+				<li>high energy resolution</li>
+				<li>only one lateral axis</li>
+				<li>high lateral resolution (x-axis)</li>
+			</ul>
+		</div>
+		<div class="step slide" data-x="6000" data-y="1000">
+			<div class="head">
+				SR-EELS - field of view
+			</div>
+			<div class="contend">
+				<img size="100%" src="Daten/SR-EELS_default.svg" />
+				<p>By default, only up to 25% of our camera area is used.</p>
+			</div>
+		</div>
+		<div class="step slide" data-x="7200" data-y="1000">
+			<div class="head">
+				SR-EELS - manipulating the magnification
+			</div>
+			<div class="contend">
+				<p>How to manipulate the magnification of the SR-EELS data-set?</p>
+				<img size="100%" src="Daten/Schema_EELS.svg" />
 				<ul>
-					<li>high number of lateral channels</li>
-					<li>limited number of energy channels</li>
-					<li>limited energy resolution</li>
+					<li><strong>projective I</strong> controls the lateral resolution (nm/px)<br />
+					no effect on the size at the camera</li>
+					<li>by default, the <strong>energy-filter</strong> is not adjusted</li>
+					<li><strong>projective II</strong> controls the lateral and energy resolution (more details on the next slides)</li>
 				</ul>
 			</div>
-
-			<div class="step slide" data-x="3600" data-y="1000">
-				<div class="head">
-					EELS data cube
-				</div>
-				<div class="contend">
-					<img size="100%" src="Daten/Cube_EELS.svg" />
-				</div>
-			</div>
-			<div class="step" data-x="3600" data-y="1000" data-z="-1">
-				<ul>
-					<li>high number of energy channels</li>
-					<li>high energy resolution</li>
-					<li>limited number of lateral channels</li>
-					<li>lateral resolution can be very high</li>
-				</ul>
-			</div>
-
-			<div class="step slide" data-x="4800" data-y="1000">
-				<div class="head">
-					SR-EELS data cube
-				</div>
-				<div class="contend">
-					<img size="100%" src="Daten/Cube_SR-EELS.svg" />
-				</div>
-			</div>
-			<div class="step" data-x="4800" data-y="1000" data-z="-1">
-				<ul>
-					<li>high number of energy channels</li>
-					<li>high energy resolution</li>
-					<li>only one lateral axis</li>
-					<li>high lateral resolution (x-axis)</li>
-				</ul>
-			</div>
-			<div class="step slide" data-x="6000" data-y="1000">
-				<div class="head">
-					SR-EELS - field of view
-				</div>
-				<div class="contend">
-					<img size="100%" src="Daten/SR-EELS_default.svg" />
-					<p>By default, only up to 25% of our camera area is used.</p>
-				</div>
-			</div>
-			<div class="step slide" data-x="7200" data-y="1000">
-				<div class="head">
-					SR-EELS - manipulating the magnification
-				</div>
-				<div class="contend">
-					<p>How to manipulate the magnification of the SR-EELS data-set?</p>
-					<img size="100%" src="Daten/Schema_EELS.svg" />
-					<ul>
-						<li><strong>projective I</strong> controls the lateral resolution (nm/px)<br />
-						no effect on the size at the camera</li>
-						<li>by default, the <strong>energy-filter</strong> is not adjusted</li>
-						<li><strong>projective II</strong> controls the lateral and energy resolution (more details on the next slides)</li>
-					</ul>
-				</div>
-			</div>
+		</div>
 
 <!--@NPPBookmarkSpecMag-->
-			<div id="SpecMag" class="step sectionTitle" data-x="8400" data-y="500" data-z="1">
-				<h1>SpecMag - Some quantitative values</h1>
-			</div>
+		<div id="SpecMag" class="step sectionTitle" data-x="8400" data-y="500" data-z="1">
+			<h1>SpecMag - Some quantitative values</h1>
+		</div>
 
-			<div class="step slide" data-x="8400" data-y="500">
-				<div class="head">
-					Projective II - SpecMag values
-				</div>
-				<div class="contend">
-					<table class="styled">
-						<thead><td>SpecMag value</td><td>energy range</td><td>lateral extend</td></thead>
-						<tr><td>315<br ><div style="font-size: 50%;">315 is the highest available value</diV></td><td>~83 eV</td><td>~25%</td></tr>
-						<tr><td>250</td><td>~105 eV</td><td>~19%</td></tr>
-						<tr><td>200</td><td>~130 eV</td><td>~16%</td></tr>
-						<tr><td>163</td><td>~162 eV</td><td>~13%</td></tr>
-						<tr><td>125</td><td>~212 eV</td><td>~10%</td></tr>
-						<tr><td>100</td><td>~273 eV</td><td>~8%</td></tr>
-						<tr><td colspan="3">There are some more ...</td></tr>
-					</table>
-				</div>
+		<div class="step slide" data-x="8400" data-y="500">
+			<div class="head">
+				Projective II - SpecMag values
 			</div>
-
-			<div class="step slide" data-x="9600" data-y="500">
-				<div class="head">
-					SpecMag - energy range
-				</div>
-				<div class="contend">
-					<img size="100%" src="Bilder/SpecMag.png" />
-				</div>
+			<div class="contend">
+				<table class="styled">
+					<thead><td>SpecMag value</td><td>energy range</td><td>lateral extend</td></thead>
+					<tr><td>315<br ><div style="font-size: 50%;">315 is the highest available value</diV></td><td>~83 eV</td><td>~25%</td></tr>
+					<tr><td>250</td><td>~105 eV</td><td>~19%</td></tr>
+					<tr><td>200</td><td>~130 eV</td><td>~16%</td></tr>
+					<tr><td>163</td><td>~162 eV</td><td>~13%</td></tr>
+					<tr><td>125</td><td>~212 eV</td><td>~10%</td></tr>
+					<tr><td>100</td><td>~273 eV</td><td>~8%</td></tr>
+					<tr><td colspan="3">There are some more ...</td></tr>
+				</table>
 			</div>
+		</div>
 
-
-			<div class="step slide" data-x="10800" data-y="500">
-				<div class="head">
-					SpecMag - lateral width
-				</div>
-				<div class="contend">
-					<img size="100%" src="Bilder/SpecMag_widthZLP.png" />
-				</div>
+		<div class="step slide" data-x="9600" data-y="500">
+			<div class="head">
+				SpecMag - energy range
 			</div>
+			<div class="contend">
+				<img size="100%" src="Bilder/SpecMag.png" />
+			</div>
+		</div>
+
+
+		<div class="step slide" data-x="10800" data-y="500">
+			<div class="head">
+				SpecMag - lateral width
+			</div>
+			<div class="contend">
+				<img size="100%" src="Bilder/SpecMag_widthZLP.png" />
+			</div>
+		</div>
 
 <!--@NPPBookmarkEFA-->
-			<div id="EFA" class="step sectionTitle" data-x="8400" data-y="1500" data-z="1">
-				<h1>Zeiss WinTEM - Energy Filter Align (EFA)</h1>
+		<div id="EFA" class="step sectionTitle" data-x="8400" data-y="1500" data-z="1">
+			<h1>Zeiss WinTEM - Energy Filter Align (EFA)</h1>
+		</div>
+		<div class="step slide" data-x="8400" data-y="1500">
+			<div class="head">
+				Zeiss WinTEM - Energy Filter Align (EFA)
 			</div>
-			<div class="step slide" data-x="8400" data-y="1500">
-				<div class="head">
-					Zeiss WinTEM - Energy Filter Align (EFA)
-				</div>
-				<div class="contend">
+			<div class="contend">
+				<ul>
+					<li>can be found at <code>Service > Energy Filter...</code></li>
+					<li>control of 7 filter elements</li>
 					<ul>
-						<li>can be found at <code>Service > Energy Filter...</code></li>
-						<li>control of 7 filter elements</li>
-						<ul>
-							<li>4 dipole elements<br />
-								-> shift the spectrum
-							</li>
-							<li>3 quadrupole elements<br />
-								-> deform and rotate the spectrum
-							</li>
-						</ul>
-						<li>deform means to compress or expand the spectrum in lateral direction</li>
-						<ul>
-							<li>deform x (QSinK7): increase the lateral size</li>
-							<li>deform y (QSinK4): controls the focus of this axis</li>
-							<li>rotation (QCosK4)</li>
-						</ul>
-					</ul>
-				</div>
-			</div>
-
-			<div class="step slide" data-x="9600" data-y="1500">
-				<div class="head">
-					EFA - Examples
-				</div>
-				<div class="contend">
-					<table class="nomargin">
-						<tr>
-							<td><dt><img src="Bilder/EFA_QSinK7=0.png" width="100%"/></dt><dd>SpecMag=315 and QSinK7=0%</dd></td>
-							<td><dt><img src="Bilder/EFA_QSinK7=-11.png" width="100%"/></dt><dd>SpecMag=315 and QSinK7=-11%</dd></td>
-						</tr>
-					</table>
-					<p>The optimized value of QSinK7 increases the lateral magnification by about 4 times. QSinK4 depends on QSinK7.</p>
-				</div>
-			</div>
-
-<!--@NPPBookmarkAberrations-->
-			<div id="aberrations" class="step sectionTitle" data-x="0" data-y="2000" data-z="1">
-				<h1>Aberrations</h1>
-			</div>
-			<div class="step slide title" data-x="0" data-y="2000">
-				<div class="head">
-					Aberrations
-				</div>
-				<div class="contend">
-					<ul>
-						<li>The lateral extend decreases with increasing energy loss
-							<ul>
-								<li>This aberration is visible at all previous images</li>
-								<li>Described by a polynomial of 2nd degree</li>
-							</ul>
+						<li>4 dipole elements<br />
+							-> shift the spectrum
+						</li>
+						<li>3 quadrupole elements<br />
+							-> deform and rotate the spectrum
 						</li>
 					</ul>
-					<table class="nomargin">
-						<tr>
-							<td><dt><img src="Bilder/polynom1.png" width="100%"/></dt>
-							<dd>Fit at top border</dd></td>
-							<td><dt><img src="Bilder/polynom2.png" width="100%"/></dt>
-							<dd>Fit at bottom border</dd></td>
-						</tr>
-						<tr><td style="padding-top: 20px; font-size: 60%;" colspan="2">(This plots were automatically created by <a href="https://github.com/EFTEMj/EFTEMj/blob/master/Scripts%2BMacros/SR-EELS_characterisation.ijm">SR-EELS_characterisation.ijm</a> and they are only used to check the tabulated results.)</td></tr>
-					</table>
+					<li>deform means to compress or expand the spectrum in lateral direction</li>
 					<ul>
-						<li>To be continued ...</li>
+						<li>deform x (QSinK7): increase the lateral size</li>
+						<li>deform y (QSinK4): controls the focus of this axis</li>
+						<li>rotation (QCosK4)</li>
 					</ul>
-				</div>
+				</ul>
 			</div>
+		</div>
 
-			<div class="step slide title" data-x="1200" data-y="2000" data-z="0">
-				<div class="head">
-					Aberrations - Method of characterization
-				</div>
-				<div class="contend">
-					<img size="100%" src="Bilder/characterization_montage.png" />
-				</div>
+		<div class="step slide" data-x="9600" data-y="1500">
+			<div class="head">
+				EFA - Examples
 			</div>
-
-			<div class="step slide" data-x="1200" data-y="1500" data-z="1000">
-				<div class="head">
-					Aberrations - Method of characterization
-				</div>
-				<div class="contend">
-					<dt><img size="100%" src="Bilder/characterization_marked_montage.png" /></dt>
-					<dd>1024px by 1024px sections of 4096px by 4096px images.<br />The marks at the borders and the centre of the signal were automatically created by <a href="https://github.com/EFTEMj/EFTEMj/blob/master/Scripts%2BMacros/SR-EELS_characterisation.ijm">SR-EELS_characterisation.ijm</a>.</dd>
-					<p>The ImageJ macro uses a combination of a Gaussian fit and the build-in threshold routine to detect the borders of the signal. At the given example 64 energy channels are <a href="">"binned"</a> for more reliable results.</p>
-				</div>
+			<div class="contend">
+				<table class="nomargin">
+					<tr>
+						<td><dt><img src="Bilder/EFA_QSinK7=0.png" width="100%"/></dt><dd>SpecMag=315 and QSinK7=0%</dd></td>
+						<td><dt><img src="Bilder/EFA_QSinK7=-11.png" width="100%"/></dt><dd>SpecMag=315 and QSinK7=-11%</dd></td>
+					</tr>
+				</table>
+				<p>The optimized value of QSinK7 increases the lateral magnification by about 4 times. QSinK4 depends on QSinK7.</p>
 			</div>
+		</div>
 
-			<div class="step slide" data-x="1800" data-y="1250" data-z="1500" data-scale="0.5">
-				<div class="head">
-					Aberrations - Method of characterization
-				</div>
-				<div class="contend">
+<!--@NPPBookmarkAberrations-->
+		<div id="aberrations" class="step sectionTitle" data-x="0" data-y="2000" data-z="1">
+			<h1>Aberrations</h1>
+		</div>
+		<div class="step slide title" data-x="0" data-y="2000">
+			<div class="head">
+				Aberrations
+			</div>
+			<div class="contend">
+				<ul>
+					<li>The lateral extend decreases with increasing energy loss
+						<ul>
+							<li>This aberration is visible at all previous images</li>
+							<li>Described by a polynomial of 2nd degree</li>
+						</ul>
+					</li>
+				</ul>
+				<table class="nomargin">
+					<tr>
+						<td><dt><img src="Bilder/polynom1.png" width="100%"/></dt>
+						<dd>Fit at top border</dd></td>
+						<td><dt><img src="Bilder/polynom2.png" width="100%"/></dt>
+						<dd>Fit at bottom border</dd></td>
+					</tr>
+					<tr><td style="padding-top: 20px; font-size: 60%;" colspan="2">(This plots were automatically created by <a href="https://github.com/EFTEMj/EFTEMj/blob/master/Scripts%2BMacros/SR-EELS_characterisation.ijm">SR-EELS_characterisation.ijm</a> and they are only used to check the tabulated results.)</td></tr>
+				</table>
+				<ul>
+					<li>To be continued ...</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="step slide title" data-x="1200" data-y="2000" data-z="0">
+			<div class="head">
+				Aberrations - Method of characterization
+			</div>
+			<div class="contend">
+				<img size="100%" src="Bilder/characterization_montage.png" />
+			</div>
+		</div>
+
+		<div class="step slide" data-x="1200" data-y="1500" data-z="1000">
+			<div class="head">
+				Aberrations - Method of characterization
+			</div>
+			<div class="contend">
+				<dt><img size="100%" src="Bilder/characterization_marked_montage.png" /></dt>
+				<dd>1024px by 1024px sections of 4096px by 4096px images.<br />The marks at the borders and the centre of the signal were automatically created by <a href="https://github.com/EFTEMj/EFTEMj/blob/master/Scripts%2BMacros/SR-EELS_characterisation.ijm">SR-EELS_characterisation.ijm</a>.</dd>
+				<p>The ImageJ macro uses a combination of a Gaussian fit and the build-in threshold routine to detect the borders of the signal. At the given example 64 energy channels are <a href="">"binned"</a> for more reliable results.</p>
+			</div>
+		</div>
+
+		<div class="step slide" data-x="1800" data-y="1250" data-z="1500" data-scale="0.5">
+			<div class="head">
+				Aberrations - Method of characterization
+			</div>
+			<div class="contend">
 <pre class="prettyprint linenums">
 "y-pos"		"x-pos"		"left"	"right"	"width"		"right-left"
 287.268544656	2073.198497962	2027	2119	92.40625		92
@@ -439,228 +592,354 @@
 1183.610286657	2060.351984598	2020	2100	80.375		80
 ...
 </pre>
-				</div>
 			</div>
+		</div>
 
-			<div class="step slide" data-x="2400" data-y="1500" data-z="1000">
-				<div class="head">
-					Aberrations - 3D-visualization
-				</div>
-				<div class="contend">
-					<dt><img height="625px" src="Bilder/3D_h(y)_SpecMag=315_QSinK7=0_225eV.png"/></dt>
-					<dd style="margin-top: -40px">$$h(y) = a\cdot y^2 + b\cdot y + c$$</dd>
-				</div>
+		<div class="step slide" data-x="2400" data-y="1500" data-z="1000">
+			<div class="head">
+				Aberrations - 3D-visualization
 			</div>
+			<div class="contend">
+				<dt><img height="625px" src="Bilder/3D_h(y)_SpecMag=315_QSinK7=0_225eV.png"/></dt>
+				<dd style="margin-top: -40px">$$h(y) = a\cdot y^2 + b\cdot y + c$$</dd>
+			</div>
+		</div>
 
-			<div class="step slide" data-x="2400" data-y="2000" data-z="0">
-				<div class="head">
-					Aberrations - 3D-visualization
-				</div>
-				<div class="contend">
-					<dt><img height="625px" src="Bilder/3D_f(x,y)_SpecMag=315_QSinK7=0_225eV.png"/></dt>
-					<dd style="margin-top: -50px">$$f(x,y) = \sum^2_{i,j=0}a_{ij}\cdot x^i y^j$$</dd>
-				</div>
+		<div class="step slide" data-x="2400" data-y="2000" data-z="0">
+			<div class="head">
+				Aberrations - 3D-visualization
 			</div>
+			<div class="contend">
+				<dt><img height="625px" src="Bilder/3D_f(x,y)_SpecMag=315_QSinK7=0_225eV.png"/></dt>
+				<dd style="margin-top: -50px">$$f(x,y) = \sum^2_{i,j=0}a_{ij}\cdot x^i y^j$$</dd>
+			</div>
+		</div>
 
-			<div class="step slide" data-x="3600" data-y="2000">
-				<div class="head">
-					Aberrations
-				</div>
-				<div class="contend">
-					<ul>
-						<li>The lateral extend decreases with increasing energy loss
-							<ul>
-								<li>This aberration is visible at all previous images</li>
-								<li>Described by a polynomial of 2nd degree</li>
-							</ul>
-						</li>
-						<li>The lateral width changes at each energy channel
-							<ul>
-								<li>Highest value at the centre</li>
-								<li>The decrease limits the field of view</li>
-								<li>Described by a polynomial of 2nd degree</li>
-							</ul>
-						</li>
-					</ul>
-					<dt style="margin-top: -20px;"><img src="Bilder/width_vs_pos.png" height="100%"/></dt>
-					<dd>Width vs lateral position for \(\Delta E = 0\)</dd>
-				</div>
+		<div class="step slide" data-x="3600" data-y="2000">
+			<div class="head">
+				Aberrations
 			</div>
+			<div class="contend">
+				<ul>
+					<li>The lateral extend decreases with increasing energy loss
+						<ul>
+							<li>This aberration is visible at all previous images</li>
+							<li>Described by a polynomial of 2nd degree</li>
+						</ul>
+					</li>
+					<li>The lateral width changes at each energy channel
+						<ul>
+							<li>Highest value at the centre</li>
+							<li>The decrease limits the field of view</li>
+							<li>Described by a polynomial of 2nd degree</li>
+						</ul>
+					</li>
+				</ul>
+				<dt style="margin-top: -20px;"><img src="Bilder/width_vs_pos.png" height="100%"/></dt>
+				<dd>Width vs lateral position for \(\Delta E = 0\)</dd>
+			</div>
+		</div>
 
-			<div class="step slide" data-x="4800" data-y="2000">
-				<div class="head">
-					Aberrations - 2D-visualization
-				</div>
-				<div class="contend">
-					<p>\(\Delta E\) represents the energy offset at the given dataset. Electrons that traverse the energy filter at an optimal ray pass will have an energy offset of \(\Delta E = 0\).</p>
-					<p>\(y_n\) is the position, where the polynomial \(f_n\) intersects the axis with \(\Delta E = 0\).</p>
-					<p>$$ \Rightarrow f_n(0) = y_n$$</p>
-					<div class="linebehind"></div>
-					<p>$$f_n(\Delta E) = \sum^2_{i,j=0}a_{ij}\cdot y_n^j\cdot \Delta E^i$$</p>
-					<p style="text-align: center;">with \(a_i = a_{i0} + a_{i1}\cdot y_n + a_{i2}\cdot y_n^2\)</p>
-					<p>$$\Rightarrow f_n(\Delta E) = \sum^2_{i=0}a_i\cdot \Delta E^i$$</p>
-				</div>
+		<div class="step slide" data-x="4800" data-y="2000">
+			<div class="head">
+				Aberrations - 2D-visualization
 			</div>
+			<div class="contend">
+				<p>\(\Delta E\) represents the energy offset at the given dataset. Electrons that traverse the energy filter at an optimal ray pass will have an energy offset of \(\Delta E = 0\).</p>
+				<p>\(y_n\) is the position, where the polynomial \(f_n\) intersects the axis with \(\Delta E = 0\).</p>
+				<p>$$ \Rightarrow f_n(0) = y_n$$</p>
+				<div class="linebehind"></div>
+				<p>$$f_n(\Delta E) = \sum^2_{i,j=0}a_{ij}\cdot y_n^j\cdot \Delta E^i$$</p>
+				<p style="text-align: center;">with \(a_i = a_{i0} + a_{i1}\cdot y_n + a_{i2}\cdot y_n^2\)</p>
+				<p>$$\Rightarrow f_n(\Delta E) = \sum^2_{i=0}a_i\cdot \Delta E^i$$</p>
+			</div>
+		</div>
 
-			<div class="step slide" data-x="6000" data-y="2000">
-				<div class="head">
-					Aberrations - 2D-visualization
-				</div>
-				<div class="contend">
-					<dt><img height="600px" src="Bilder/Borders_SpecMag=315_QSinK7=0_225eV.png"/></dt>
-					<dd style="margin-top: -20px">$$f_n(\Delta E) = \sum^2_{i,j=0}a_{ij}\cdot y_n^j\cdot \Delta E^i$$</dd>
-				</div>
+		<div class="step slide" data-x="6000" data-y="2000">
+			<div class="head">
+				Aberrations - 2D-visualization
 			</div>
+			<div class="contend">
+				<dt><img height="600px" src="Bilder/Borders_SpecMag=315_QSinK7=0_225eV.png"/></dt>
+				<dd style="margin-top: -20px">$$f_n(\Delta E) = \sum^2_{i,j=0}a_{ij}\cdot y_n^j\cdot \Delta E^i$$</dd>
+			</div>
+		</div>
 
 <!--@NPPBookmarkCorrection-->
-			<div id="correction" class="step sectionTitle" data-x="0" data-y="3000" data-z="1">
-				<h1>Correction by image processing</h1>
+		<div id="correction" class="step sectionTitle" data-x="0" data-y="3000" data-z="1">
+			<h1>Correction by image processing</h1>
+		</div>
+
+		<div class="step slide title" data-x="0" data-y="3000">
+			<div class="head">
+				Correction - Remark
 			</div>
-
-			<div class="step slide title" data-x="0" data-y="3000">
-				<div class="head">
-					Correction - Remark
-				</div>
-				<div class="contend">
-					<img class="rotate270" height="650px" src="Bilder/Borders_SpecMag=315_QSinK7=0_225eV.png"/>
-				</div>
+			<div class="contend">
+				<img class="rotate270" height="650px" src="Bilder/Borders_SpecMag=315_QSinK7=0_225eV.png"/>
 			</div>
+		</div>
 
-			<div class="step slide" data-x="1200" data-y="3000">
-				<div class="head">
-					Correction - Overview
-				</div>
-				<div class="contend">
-					<p style="margin-top: -25px">$$f_n(\Delta E) = \sum^2_{i=0}{a_n}_i\cdot \Delta E^i\\
-					\Rightarrow f_n(x) = \sum^2_{i=0}{a_n}_i\cdot x^i$$</p>
-					<ul>
-						<li>\(f_n(x)\) can be used to describe a coordinate transformation.</li>
-						<li>\(x\) and \(y\) are the coordinates of the distorted dataset.</li>
-						<li>\(x^*\) and \(y^*\) are the coordinates of the corrected dataset.</li>
-					</ul>
-					<p>$$x^* = s_{y^*}(x) = \int_0^{x^*} \sqrt{1+\left(f_{y^*}'(z)\right)^2}\mathrm{\ d}z$$</p>
-					<p>$$y = f_{y^*}(x)$$</p>
-				</div>
+		<div class="step slide" data-x="1200" data-y="3000">
+			<div class="head">
+				Correction - Overview
 			</div>
-
-			<div class="step slide" data-x="2400" data-y="2500" data-z="1000">
-				<div class="head">
-					Correction - The x-axis (1)
-				</div>
-				<div class="contend">
-					<p>$$x^* = s(x) = \int_0^x \sqrt{1+\left(f_{y^*}'(z)\right)^2}\mathrm{\ d}z$$</p>
-					<p>$$\mathrm{with\quad } a = 4a_2^2\mathrm{,\quad } b = 4a_1a_2 \mathrm{\quad and\quad } c = a_2^2+1$$</p>
-					<p>$$\Rightarrow s(x) = \int_0^x \sqrt{az^2+bz+c}\mathrm{\ d}z$$</p>
-					<p>$$\mathrm{with\quad } g'(y) = \frac{1}{f'(x)}\quad and\quad g(y) = f^{-1}(y)$$</p>
-					<p>$$\Rightarrow x = s^{-1}(x^*) = \int_0^{x^*} \frac{\mathrm{\ d}z}{\sqrt{az^2+bz+c}}$$</p>
-				</div>
+			<div class="contend">
+				<p style="margin-top: -25px">$$f_n(\Delta E) = \sum^2_{i=0}{a_n}_i\cdot \Delta E^i\\
+				\Rightarrow f_n(x) = \sum^2_{i=0}{a_n}_i\cdot x^i$$</p>
+				<ul>
+					<li>\(f_n(x)\) can be used to describe a coordinate transformation.</li>
+					<li>\(x\) and \(y\) are the coordinates of the distorted dataset.</li>
+					<li>\(x^*\) and \(y^*\) are the coordinates of the corrected dataset.</li>
+				</ul>
+				<p>$$x^* = s_{y^*}(x) = \int_0^{x^*} \sqrt{1+\left(f_{y^*}'(z)\right)^2}\mathrm{\ d}z$$</p>
+				<p>$$y = f_{y^*}(x)$$</p>
 			</div>
+		</div>
 
-			<div class="step slide" data-x="2400" data-y="3000">
-				<div class="head">
-					Correction - The x-axis (2)
-				</div>
-				<div class="contend">
-					<p>$$x = s^{-1}(x^*) = \int_0^{x^*} \frac{\mathrm{\ d}z}{\sqrt{az^2+bz+c}}$$</p>
-					<p>$$x = \left.\frac{1}{\sqrt{a}}\ln\left|2\sqrt{a(az^2+bz+c)}+2az+b\right|\right|^{z=x^*}_{z=0}$$</p>
-					<p>$$\mathrm{for\quad }a = 4a_2^2 > 0$$</p>
-					<p>$$x = \left.\frac{1}{\sqrt{a}}\arcsin^{-1}\frac{2az+b}{\sqrt{4ac-b^2}}\right|^{z=x^*}_{z=0}$$</p>
-					<p>$$\mathrm{for\quad }4ac-b^2 = 4a_2^2(7a_1^2 + 11) > 0$$</p>
-				</div>
+		<div class="step slide" data-x="2400" data-y="2500" data-z="1000">
+			<div class="head">
+				Correction - The x-axis (1)
 			</div>
-
-			<div class="step slide" data-x="3600" data-y="3000">
-				<div class="head">
-					Correction - Full transformation
-				</div>
-				<div class="contend">
-					<h1>x-coordinate:</h1>
-					<p>$$x = \left.\frac{1}{\sqrt{a}}\arcsin^{-1}\frac{2\,az+b}{\sqrt{4\,ac-b^2}}\right|^{z=x^*}_{z=0}$$</p>
-					<p>$$= \frac{1}{\sqrt{a}}\left(\arcsin^{-1}\frac{2\,ax^*+b}{\sqrt{4\,ac-b^2}} - \arcsin^{-1}\frac{b}{\sqrt{4\,ac-b^2}}\right)$$</p>
-					<p>$$\mathrm{with\quad } a = 4\,a_2^2(y^*)\mathrm{,\quad } b = 4\,a_1(y^*)a_2(y^*) \mathrm{\quad and\quad } c = a_2^2(y^*)+1$$</p>
-					<h1>y-coordinate:</h1>
-					<p>$$y = f_{y^*}(x) = a_2(y^*)x^2+a_1(y^*)x+a_0(y^*)$$</p>
-				</div>
+			<div class="contend">
+				<p>$$x^* = s(x) = \int_0^x \sqrt{1+\left(f_{y^*}'(z)\right)^2}\mathrm{\ d}z$$</p>
+				<p>$$\mathrm{with\quad } a = 4a_2^2\mathrm{,\quad } b = 4a_1a_2 \mathrm{\quad and\quad } c = a_2^2+1$$</p>
+				<p>$$\Rightarrow s(x) = \int_0^x \sqrt{az^2+bz+c}\mathrm{\ d}z$$</p>
+				<p>$$\mathrm{with\quad } g'(y) = \frac{1}{f'(x)}\quad and\quad g(y) = f^{-1}(y)$$</p>
+				<p>$$\Rightarrow x = s^{-1}(x^*) = \int_0^{x^*} \frac{\mathrm{\ d}z}{\sqrt{az^2+bz+c}}$$</p>
 			</div>
+		</div>
 
-			<div class="step slide" data-x="4800" data-y="3000">
-				<div class="head">
-					Correction - Example (QSinK7 = 0%)
-				</div>
-				<div class="contend">
-					<dt><img height="300px" src="Bilder/QSinK7=0.png"/></dt>
-					<dd>Uncorrected data set at the Chromium L-edges.</dd>
-					<dt><img height="300px" src="Bilder/QSinK7=0_corrected.png"/></dt>
-					<dd>Corrected data set (no intensity correction) at the Chromium L-edges.</dd>
-				</div>
+		<div class="step slide" data-x="2400" data-y="3000">
+			<div class="head">
+				Correction - The x-axis (2)
 			</div>
-
-			<div class="step slide" data-x="6000" data-y="3000">
-				<div class="head">
-					Correction - Example (QSinK7 = -11%)
-				</div>
-				<div class="contend">
-					<dt><img height="300px" src="Bilder/QSinK7=-11.png"/></dt>
-					<dd>Uncorrected data set at the Chromium L-edges.</dd>
-					<dt><img height="300px" src="Bilder/QSinK7=-11_corrected.png"/></dt>
-					<dd>Corrected data set (no intensity correction) at the Chromium L-edges.</dd>
-				</div>
+			<div class="contend">
+				<p>$$x = s^{-1}(x^*) = \int_0^{x^*} \frac{\mathrm{\ d}z}{\sqrt{az^2+bz+c}}$$</p>
+				<p>$$x = \left.\frac{1}{\sqrt{a}}\ln\left|2\sqrt{a(az^2+bz+c)}+2az+b\right|\right|^{z=x^*}_{z=0}$$</p>
+				<p>$$\mathrm{for\quad }a = 4a_2^2 > 0$$</p>
+				<p>$$x = \left.\frac{1}{\sqrt{a}}\arcsin^{-1}\frac{2az+b}{\sqrt{4ac-b^2}}\right|^{z=x^*}_{z=0}$$</p>
+				<p>$$\mathrm{for\quad }4ac-b^2 = 4a_2^2(7a_1^2 + 11) > 0$$</p>
 			</div>
+		</div>
 
-			<div class="step slide" data-x="7200" data-y="3000">
-				<div class="head">
-					Correction - Correct the Intensity
-				</div>
-				<div class="contend">
-					<ul>
-						<li>
-							The size of each pixel changes.<br />
-							\(\Rightarrow\)The intensity per pixel changes accordingly.
-						</li>
-						<li>A corrected pixel will overlay several uncorrected pixels.</li>
-					</ul>
-					<dt><img src="Bilder/Pixel.svg" height="300"/></dt>
-					<dd>The intensity of the corrected pixel is made up of the partial intensities of several uncorrected pixels.</dd>
-					<p>Details are presented at the blackboard!</p>
-				</div>
+		<div class="step slide" data-x="3600" data-y="3000">
+			<div class="head">
+				Correction - Full transformation
 			</div>
-
-			<div id="summary" class="step slide" data-x="0" data-y="4000">
-				<div class="head">
-					Summary
-				</div>
-				<div class="contend">
-					<ul class="morespace">
-						<li>The imaging filter can be adjusted by several controls, but only QSinK7 (deform x) and QSinK4 (deform y) are useful.</li>
-						<li>The lateral magnification can be adjusted independently from the energy magnification.</li>
-						<li>The distortion of the imaging filter can be described by a function series of simple polynomials of 2nd degree.</li>
-						<li>The main problem of the correction is the mapping of calculated continuous coordinates to discrete coordinates of the recorded images.</li>
-					</ul>
-				</div>
+			<div class="contend">
+				<h1>x-coordinate:</h1>
+				<p>$$x = \left.\frac{1}{\sqrt{a}}\arcsin^{-1}\frac{2\,az+b}{\sqrt{4\,ac-b^2}}\right|^{z=x^*}_{z=0}$$</p>
+				<p>$$= \frac{1}{\sqrt{a}}\left(\arcsin^{-1}\frac{2\,ax^*+b}{\sqrt{4\,ac-b^2}} - \arcsin^{-1}\frac{b}{\sqrt{4\,ac-b^2}}\right)$$</p>
+				<p>$$\mathrm{with\quad } a = 4\,a_2^2(y^*)\mathrm{,\quad } b = 4\,a_1(y^*)a_2(y^*) \mathrm{\quad and\quad } c = a_2^2(y^*)+1$$</p>
+				<h1>y-coordinate:</h1>
+				<p>$$y = f_{y^*}(x) = a_2(y^*)x^2+a_1(y^*)x+a_0(y^*)$$</p>
 			</div>
+		</div>
 
-			<div id="outlook" class="step slide" data-x="1200" data-y="4000">
-				<div class="head">
-					Outlook
-				</div>
-				<div class="contend">
-					<ul class="morespace">
-						<li>This presentation will be extended to give a general overview to SR-EELS at the Libra 200FE.</li>
-						<li>The algorithm for the correction of the intensity is not yet completed. The goal is to finish it next week.</li>
-						<li>I have to investigate if a measurement is reproducible, or if it is necessary to run the calibration procedure each time.</li>
-						<li>An approach is required to calibrate the lateral axis<br /> (The calibration for the energy axis can be taken from EELS mode).</li>
-					</ul>
-				</div>
+		<div class="step slide" data-x="4800" data-y="3000">
+			<div class="head">
+				Correction - Example (QSinK7 = 0%)
 			</div>
-
-			<div class="step" data-x="2400" data-y="4000">
-				<p style="font-size: 200%">Thank you for your attention!</p>
+			<div class="contend">
+				<dt><img height="300px" src="Bilder/QSinK7=0.png"/></dt>
+				<dd>Uncorrected data set at the Chromium L-edges.</dd>
+				<dt><img height="300px" src="Bilder/QSinK7=0_corrected.png"/></dt>
+				<dd>Corrected data set (no intensity correction) at the Chromium L-edges.</dd>
 			</div>
+		</div>
 
-        </div>
+		<div class="step slide" data-x="6000" data-y="3000">
+			<div class="head">
+				Correction - Example (QSinK7 = -11%)
+			</div>
+			<div class="contend">
+				<dt><img height="300px" src="Bilder/QSinK7=-11.png"/></dt>
+				<dd>Uncorrected data set at the Chromium L-edges.</dd>
+				<dt><img height="300px" src="Bilder/QSinK7=-11_corrected.png"/></dt>
+				<dd>Corrected data set (no intensity correction) at the Chromium L-edges.</dd>
+			</div>
+		</div>
 
-		<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=default"></script>
-        <script src="js/impress.js"></script>
-        <script>impress().init();</script>
-    </body>
+		<div class="step slide" data-x="7200" data-y="3000">
+			<div class="head">
+				Correction - Correct the Intensity
+			</div>
+			<div class="contend">
+				<ul>
+					<li>
+						The size of each pixel changes.<br />
+						\(\Rightarrow\)The intensity per pixel changes accordingly.
+					</li>
+					<li>A corrected pixel will overlay several uncorrected pixels.</li>
+				</ul>
+				<dt><img src="Bilder/Pixel.svg" height="300"/></dt>
+				<dd>The intensity of the corrected pixel is made up of the partial intensities of several uncorrected pixels.</dd>
+				<p>Details are presented at the blackboard!</p>
+			</div>
+		</div>
+
+		<div id="summary" class="step slide" data-x="0" data-y="4000">
+			<div class="head">
+				Summary
+			</div>
+			<div class="contend">
+				<ul class="morespace">
+					<li>The imaging filter can be adjusted by several controls, but only QSinK7 (deform x) and QSinK4 (deform y) are useful.</li>
+					<li>The lateral magnification can be adjusted independently from the energy magnification.</li>
+					<li>The distortion of the imaging filter can be described by a function series of simple polynomials of 2nd degree.</li>
+					<li>The main problem of the correction is the mapping of calculated continuous coordinates to discrete coordinates of the recorded images.</li>
+				</ul>
+			</div>
+		</div>
+
+		<div id="outlook" class="step slide" data-x="1200" data-y="4000">
+			<div class="head">
+				Outlook
+			</div>
+			<div class="contend">
+				<ul class="morespace">
+					<li>This presentation will be extended to give a general overview to SR-EELS at the Libra 200FE.</li>
+					<li>The algorithm for the correction of the intensity is not yet completed. The goal is to finish it next week.</li>
+					<li>I have to investigate if a measurement is reproducible, or if it is necessary to run the calibration procedure each time.</li>
+					<li>An approach is required to calibrate the lateral axis<br /> (The calibration for the energy axis can be taken from EELS mode).</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="step" data-x="2400" data-y="4000">
+			<p style="font-size: 200%">Thank you for your attention!</p>
+		</div>
+
+</div>
+
+<!--
+    
+    Hint is not related to impress.js in any way.
+    
+    But it can show you how to use impress.js features in creative way.
+    
+    When the presentation step is shown (selected) its element gets the class of "active" and the body element
+    gets the class based on active step id `impress-on-ID` (where ID is the step's id)... It may not be
+    so clear because of all these "ids" in previous sentence, so for example when the first step (the one with
+    the id of `bored`) is active, body element gets a class of `impress-on-bored`.
+    
+    This class is used by this hint below. Check CSS file to see how it's shown with delayed CSS animation when
+    the first step of presentation is visible for a couple of seconds.
+    
+    ...
+    
+    And when it comes to this piece of JavaScript below ... kids, don't do this at home ;)
+    It's just a quick and dirty workaround to get different hint text for touch devices.
+    In a real world it should be at least placed in separate JS file ... and the touch content should be
+    probably just hidden somewhere in HTML - not hard-coded in the script.
+    
+    Just sayin' ;)
+    
+-->
+<div class="hint">
+    <p>Use a spacebar or arrow keys to navigate</p>
+</div>
+<script>
+if ("ontouchstart" in document.documentElement) { 
+    document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+}
+</script>
+
+<!--
+	I use MathJax to create formulas with LaTeX-code and google code prettify to have nice looking source code.
+-->
+<script type="text/javascript"
+			src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=default"></script>
+
+<!--
+    
+    Last, but not least.
+    
+    To make all described above really work, you need to include impress.js in the page.
+    I strongly encourage to minify it first.
+    
+    In here I just include full source of the script to make it more readable.
+    
+    You also need to call a `impress().init()` function to initialize impress.js presentation.
+    And you should do it in the end of your document. Not only because it's a good practice, but also
+    because it should be done when the whole document is ready.
+    Of course you can wrap it in any kind of "DOM ready" event, but I was too lazy to do so ;)
+    
+-->
+<script src="js/min_impress.js"></script>
+<script>impress().init();</script>
+
+<!--
+    
+    The `impress()` function also gives you access to the API that controls the presentation.
+    
+    Just store the result of the call:
+    
+        var api = impress();
+    
+    and you will get three functions you can call:
+    
+        `api.init()` - initializes the presentation,
+        `api.next()` - moves to next step of the presentation,
+        `api.prev()` - moves to previous step of the presentation,
+        `api.goto( idx | id | element, [duration] )` - moves the presentation to the step given by its index number
+                id or the DOM element; second parameter can be used to define duration of the transition in ms,
+                but it's optional - if not provided default transition duration for the presentation will be used.
+    
+    You can also simply call `impress()` again to get the API, so `impress().next()` is also allowed.
+    Don't worry, it wont initialize the presentation again.
+    
+    For some example uses of this API check the last part of the source of impress.js where the API
+    is used in event handlers.
+    
+-->
+
+</body>
 </html>
+
+<!--
+    
+    Now you know more or less everything you need to build your first impress.js presentation, but before
+    you start...
+    
+    Oh, you've already cloned the code from GitHub?
+    
+    You have it open in text editor?
+    
+    Stop right there!
+    
+    That's not how you create awesome presentations. This is only a code. Implementation of the idea that
+    first needs to grow in your mind.
+    
+    So if you want to build great presentation take a pencil and piece of paper. And turn off the computer.
+    
+    Sketch, draw and write. Brainstorm your ideas on a paper. Try to build a mind-map of what you'd like
+    to present. It will get you closer and closer to the layout you'll build later with impress.js.
+    
+    Get back to the code only when you have your presentation ready on a paper. It doesn't make sense to do
+    it earlier, because you'll only waste your time fighting with positioning of useless points.
+    
+    If you think I'm crazy, please put your hands on a book called "Presentation Zen". It's all about 
+    creating awesome and engaging presentations.
+    
+    Think about it. 'Cause impress.js may not help you, if you have nothing interesting to say.
+    
+-->
+
+<!--
+    
+    Are you still reading this?
+    
+    For real?
+    
+    I'm impressed! Feel free to let me know that you got that far (I'm @bartaz on Twitter), 'cause I'd like
+    to congratulate you personally :)
+    
+    But you don't have to do it now. Take my advice and take some time off. Make yourself a cup of coffee, tea,
+    or anything you like to drink. And raise a glass for me ;)
+    
+    Cheers!
+    
+-->
