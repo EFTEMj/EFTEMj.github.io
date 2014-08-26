@@ -1,0 +1,433 @@
+/*
+    We start with a good ol' reset.
+    That's the one by Eric Meyer http://meyerweb.com/eric/tools/css/reset/
+
+    You can probably argue if it is needed here, or not, but for sure it
+    doesn't do any harm and gives us a fresh start.
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+/*
+    Now here is when interesting things start to appear.
+
+    We set up <body> styles with default font and nice gradient in the background.
+    And yes, there is a lot of repetition there because of -prefixes but we don't
+    want to leave anybody behind.
+*/
+body {
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+	font-weight: normal;
+    font-size: 30px;
+    line-height: 1.2;
+    letter-spacing: -1px;
+	text-align: justify;
+    min-height: 740px;
+
+    background: rgb(215, 215, 215);
+    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
+    background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    background:    -moz-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    background:     -ms-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    background:      -o-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    background:         radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	-ms-font-smoothing: antialiased;
+	-o-font-smoothing: antialiased;
+}
+
+/*
+    Now let's bring some text styles back ...
+*/
+b, strong { font-weight: bold }
+i, em { font-style: italic }
+
+/*
+    Now let's style the presentation steps.
+
+    We start with basics to make sure it displays correctly in everywhere ...
+*/
+
+.step {
+    position: relative;
+    width: 1024px;
+	padding-left: 30px;
+	padding-right: 30px;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing:    border-box;
+    -ms-box-sizing:     border-box;
+    -o-box-sizing:      border-box;
+    box-sizing:         border-box;
+}
+
+/*
+    ... and we enhance the styles for impress.js.
+
+    Basically we remove the margin and make inactive steps a little bit transparent.
+*/
+.step {
+    margin: 0;
+    opacity: 0.2;
+
+    -webkit-transition: opacity 1s;
+    -moz-transition:    opacity 1s;
+    -ms-transition:     opacity 1s;
+    -o-transition:      opacity 1s;
+    transition:         opacity 1s;
+}
+
+.sectionTitle {
+	opacity: 0.0;
+}
+
+.step.active { opacity: 1 }
+
+/*
+    These 'slide' step styles were heavily inspired by HTML5 Slides:
+    http://html5slides.googlecode.com/svn/trunk/styles.css
+
+    ;)
+
+    They cover everything what you see on first three steps of the demo.
+*/
+.slide {
+    width: 1024px;
+    height: 768px;
+	padding-left: 30px;
+	padding-right: 30px;
+
+    background-color: white;
+    border: 2px solid rgba(0, 142, 150, 1.0);
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+}
+
+/*
+	This is the first page of a section.
+*/
+
+.sectionTitle {
+	margin: auto;
+	font-size:	175%;
+	line-height: 175%;
+	text-align: center;
+	background-color: white;
+	border-left: 2px solid rgba(0, 142, 150, 1.0);
+	border-right: 2px solid rgba(0, 142, 150, 1.0);
+}
+
+/*
+	A slide can be divides into 'head' and 'contend' elements.
+	
+	The head will take 9% of the height (69px).
+*/
+.slide .head {
+	height: 9%;
+	width: 100%;
+	font-size: 150%;
+	line-height: 150%;
+	letter-spacing: -3px;
+}
+
+/*
+	The 'contend' will take the full height, if no head is present.
+*/
+.slide .contend {
+	height: 100%;
+	width: 100%;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	text-align: justify;
+}
+
+/*
+	Let's reduce the height, if the previous element has the class 'head'.
+*/
+.slide .head + .slide .contend {
+	height: 89%;
+}
+
+/*
+	Place a line behind the 'head' element.
+	We have to use negative margins to compensate the settings of 'step'/'slide'.
+*/
+.slide .head:after , .linebehind{
+    clear: both;
+    content: ".";
+    display: block;
+    height: 1px;
+    border-bottom: 2px solid rgba(0, 142, 150, 1.0);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+    margin: 0px -30px 0px -30px;
+    font-size: 0.01em;
+}
+
+div.fill .head {
+	margin: 0px -30px 0px -30px;
+	padding: 0px 30px 0px 30px;
+	background: rgba(255, 255, 255, .75);
+	border-radius: 10px 10px 0px 0px;
+}
+
+ul {
+	list-style-type: disc;
+	margin: 30px 30px 30px 30px;
+	padding-left: 30px;
+	text-align: left;
+}
+
+ol {
+	list-style-type: decimal;
+	margin: 30px 30px 30px 30px;
+	padding-left: 30px;
+	text-align: left;
+}
+
+ul ul, ol ol {
+	margin: 0px 0px 0px 30px;
+}
+
+ol ol {
+	list-style-type: lower-alpha;
+}
+
+li {
+	padding: 5px 0px 5px 0px;
+}
+
+pre ol {
+	list-style-type: none;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+}
+
+.slide img {
+	margin: 0 auto;
+	display: block;
+}
+
+.slide iframe {
+	margin: 0 auto;
+	display: block;
+}
+
+img[size='100%'] {
+	padding-top: 1%;
+	max-height: 86%;
+	max-width: 100%;
+}
+
+img + * {
+	padding-top: 15px;
+}
+
+div.fill img {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	z-index: -1;
+}
+
+pre {
+	text-align: left;
+	font-family: 'Source Code Pro', 'Courier New', monospace;
+	font-size: 20px;
+	line-height: 28px;
+	letter-spacing: -1px;
+	position: relative;
+}
+
+pre[data-lang]:after {
+	content: attr(data-lang);
+	background-color: darkgrey;
+	right: 0;
+	top: 0;
+	position: absolute;
+	font-size: 16pt;
+	color: white;
+	padding: 2px 25px;
+	text-transform: uppercase;
+}
+
+code {
+	font-size: 95%;
+	font-family: 'Source Code Pro', 'Courier New', monospace;
+	color: black;
+}
+
+iframe[size='100%'] {
+	width: 100%;
+	height: 86%;
+	background: white;
+	border: 1px solid rgb(192, 192, 192);
+	margin: -1px;
+}
+
+div.box {
+	margin: 25px 0px 25px 0px;
+	border: 1px solid rgb(192, 192, 192);
+	border-radius: 10px;
+	background: white;
+}
+
+div.box h3 {
+	text-align: center;
+	color: white;
+	background: blue;
+	border-radius: 10px 10px 0px 0px;
+}
+
+div.box p {
+	padding: 10px 30px 10px 30px;
+}
+
+div.box ul {
+	padding: 10px 30px 10px 30px;
+}
+
+table.styled {
+    border-collapse: collapse;
+    border-spacing: 10px;
+    border: 1px solid rgba(0, 142, 150, 1.0);
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.styled td, .styled tr {	
+    border: 1px solid rgba(0, 142, 150, 1.0);
+}
+
+.styled thead {
+	font-weight: bold;
+}
+
+.styled td {
+	padding: 15px;
+}
+
+.cite {
+	font-size: 80%;
+	font-style: italic;
+	text-align: right;
+}
+
+.right {
+	text-align: right;
+}
+
+dd {
+	text-align: center;
+	font-size: 60%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+table + p, img + p, dd + p {
+	 padding-top: 30px;
+}
+
+.present .rotate270 {
+	-webkit-transform: rotate(270deg) scale(0.75, 1.5);
+	-moz-transform: rotate(270deg) scale(0.75, 1.5);
+	-ms-transform: rotate(270deg) scale(0.75, 1.5);
+	-o-transform: rotate(270deg) scale(0.75, 1.5);
+	transform: rotate(270deg) scale(0.75, 1.5);
+}
+
+.rotate270 {
+	-webkit-transition: 1s;
+	-moz-transition: 1s;
+	-ms-transition: 1s;
+	-o-transition: 1s;
+	transition: 1s;
+	-webkit-transition-delay: 3s;
+	-moz-transition-delay: 3s;
+	-ms-transition-delay: 3s;
+	-o-transition-delay: 3s;
+	transition-delay: 3s;
+}
+
+/* Styles of single pages
+
+	start
+*/
+
+#start hgroup {
+	margin: 100px 10px 100px 10px;
+	padding: 0px 25px 0px 25px;
+	background: rgb(192, 192, 192);
+	border-radius: 30px 30px 30px 30px;
+}
+
+#start p {
+	padding: 25px 0px 25px 0px;
+}
+
+#title {
+	font-size: 40px;
+	line-height: 1.2;
+	letter-spacing: -2px;
+	text-align: center;
+	/*text-transform: uppercase;*/
+}
+
+#name {
+	font-size: 35px;
+	letter-spacing: -3px;
+	text-align: center;
+}
+
+#date {
+	font-size: 35px;
+	letter-spacing: -3px;
+	text-align: center;
+}
+
+.morespace li{
+	margin: 25px;
+}

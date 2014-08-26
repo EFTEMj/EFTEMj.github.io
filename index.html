@@ -1,0 +1,882 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=1280" />
+        <title>Spatially resolved EELS with an in-column Omega filter - characterization of energy filter aberrations and their correction by image processing</title>
+        <link href="css/styles.css" rel="stylesheet"></script>
+		<script type="text/javascript"
+			src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+		</script>
+		<base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+    </head>
+    <body class="impress-not-supported">
+
+		<div id="impress">
+
+			<div id="start" class="step slide" data-x="0" data-y="0">
+				<div class="contend">
+					<hgroup>
+						<p id="title">Spatially resolved EELS (SR-EELS)<br />with an in-column Omega filter - characterization of energy filter aberrations<br />and their correction by image processing</p>
+						<p id="name">Michael Entrup</p>
+						<p id="date">06.06.2014</p>
+					</hgroup>
+				</div>
+			</div>
+
+<!--@NPPBookmarktoc-->
+			<div id="toc" class="step slide" data-x="1200" data-y="0">
+				<div class="head">
+					list of contents
+				</div>
+				<div class="contend">
+					<ol>
+						<li><a href="#/impress.js" target="_top">impress.js - A short introduction</a></li>
+						<li><a href="#/sr-eels" target="_top">SR-EELS - An introduction</a></li>
+							<ol>
+								<li><a href="#/SpecMag" target="_top">SpecMag - Some quantitative values</a></li>
+								<li><a href="#/EFA" target="_top">Zeiss WinTEM - Energy Filter Align (EFA)</a></li>
+							</ol>
+						<li><a href="#/aberrations" target="_top">Aberrations</a></li>
+						<li><a href="#/correction" target="_top">Correction by image processing</a></li>
+						<li><a href="#/summary" target="_top">Summary</a></li>
+						<li><a href="#/outlook" target="_top">Outlook</a></li>
+					</ol>
+					<ul>
+						<li>Some short side trips on how to use Gnuplot to analyse complex data.
+					</ul>
+				</div>
+			</div>
+
+<!--@NPPBookmarkimpress.js-->
+			<div id="impress.js" class="step sectionTitle" data-x="0" data-y="-1000" data-z="1">
+				<h1>impress.js - A short introduction</h1>
+			</div>
+
+			<div class="slide step" data-x="0" data-y="-1000">
+				<div class="head">
+					impress.js
+				</div>
+				<div class="contend">
+					<p>This presentation was created by using <a href="https://github.com/bartaz/impress.js/">impress.js</a>.</p>
+					<div class="box">
+						<h3>What is impress.js</h3>
+						<p>
+							It's a presentation framework based on the power of CSS3 transforms and transitions in modern browsers and inspired by the idea behind prezi.com.
+						<p>
+						<p class="cite">[https://github.com/bartaz/impress.js]</p>
+					</div>
+					<p>About impress.js:</p>
+					<ul>
+						<li>You only need a browser and a text editor</li>
+						<li>Uses HTML, CSS and JavaScript</li>
+						<li>Not limited to slides</li>
+						<li>Place your contend in a 3D canvas</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="step" data-x="1200" data-y="-1000" data-z="1000" data-rotate-x="-45">
+				<div class="box">
+					<h3>A 3D canvas</h3>
+					<ul>
+						<li>Set x-, y- and z-coordinates</li>
+						<li>Rotate around all 3 axes</li>
+						<li>Zoom in and out</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="slide step" data-x="2400" data-y="-1000">
+				<div class="head">
+					More examples using impress.js
+				</div>
+				<div class="contend">
+					<ul>
+						<li><a href="http://bartaz.github.com/meetjs/css3d-summit">CSS 3D transforms</a> from <a href="http://summit.meetjs.pl">meet.js summit</a> by <a href="http://twitter.com/bartaz">@bartaz</a></li>
+						<li><a href="http://manuelbaronetti.com.ar/demo-impress/en">Testing impress.js</a> by <a href="http://twitter.com/manursio">@manursio</a></li>
+						<li><a href="http://www.hashdog.com/brochure">Hashdog: Software Factory - Brochure</a> by <a href="http://www.hashdog.com/brochure">Franco Alvarez</a></li>
+						<li><a href="http://www.innovativephp.com/demo/impress-js-demos/chapter5/#/about">Building a Personal Website with impress.js</a> by <a href="http://link.packtpub.com/4pHfi7">Rakhitha Nimesh</a></li>
+						<li><a href="http://www.jgog.in">jgog.in</a> Website/Portfolio of <a href="https://github.com/jenil27">Jenil Gogari</a>, designer from Mumbai, India</li>
+					</ul>
+					<p>All links will open in a new tab. So have a look at all the impressive examples.</p>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="3600" data-y="-1000">
+				<div class="head">
+					LaTeX-formulas
+				</div>
+				<div class="contend">
+					<p>It is even possible to use LaTeX code to create formulas.
+					<div class="box">
+						<h3>Here is an example:</h3>
+						<p>When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are</p>
+						<p>$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$</p>
+					</div>
+					<p>This formulas are created by <a href="http://www.mathjax.org/">MathJax</a>.</p>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="4800" data-y="-1000">
+				<div class="head">
+					Source-code with syntax highlighting
+				</div>
+				<div class="contend">
+					<pre class="prettyprint linenums" data-lang="javascript">
+&lt;script type='text/javascript'&gt;
+  // Say hello world until the user starts questioning
+  // the meaningfulness of their existence.
+  function helloWorld(world) {
+	for (var i = 42; --i &gt;= 0;) {
+	  alert('Hello ' + String(world));
+	}
+  }
+&lt;/script&gt;
+&lt;style&gt;
+  p { color: pink }
+  b { color: blue }
+  u { color: 'umber' }
+&lt;/style&gt;</pre>
+					<p><a href="http://code.google.com/p/google-code-prettify/wiki/GettingStarted">google-code-prettify</a> is used to create this output.</p>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="6000" data-y="-1000">
+				<div class="head">
+					Include a website using an iframe
+				</div>
+				<div class="contend">
+					<iframe size="100%" src='http://www.fiji.sc'></iframe>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="7200" data-y="-1000">
+				<div class="head">
+					You can even watch a video
+				</div>
+				<div class="contend">
+					<iframe src="http://www.youtube.com/embed/CxmvFYp8EtU" width="640px" height="400px"></iframe>
+					<p style="width:640px; margin:auto;">To bad there is no video about the Zeiss Libra 200FE with an in-column Omega filter on <a href="http://www.youtube.com">youtube</a>.</p>
+				</div>
+			</div>
+
+<!--@NPPBookmarkSR-EELS-->
+			<div id="sr-eels" class="step sectionTitle" data-x="0" data-y="1000" data-z="1">
+				<h1>SR-EELS - An introduction</h1>
+			</div>
+
+			<div class="step slide" data-x="0" data-y="1000">
+				<div class="head">
+					How to use an imaging filter
+				</div>
+				<div class="contend">
+					<div class="box">
+						<h3>L. Reimer, I. Fromm and R. Rennekamp</h3>
+						<p>
+							We call those coordinates "dispersive" for which the one- or two-dimensional intensity distribution is recorded and use different symbols for the "selective" windows.
+						</p>
+						<p class="cite">[Reimer1989]</p>
+					</div>
+					<img src="Bilder/omega.png" height="300px" />
+				</div>
+			</div>
+
+			<div class="step slide" data-x="1200" data-y="1000">
+				<div class="head">
+					Dispersive coordinates and selective windows
+				</div>
+				<div class="contend">
+					<table class="styled" style="font-size: 20px">
+						<thead><td>Dispersive coordinates</td><td>Selective windows</td></thead>
+						<tr><td rowspan="3">x, y (space coordinates)</td><td>ΔA (specimen area)</td></tr>
+						<tr><td>d (diameter of selected area)</td></tr>
+						<tr><td>Δy (width of slit parallel to x)</td></tr>
+						<tr><td>ΔE (energy loss)</td><td>ΔW (energy window)</td></tr>
+					</table>
+					<table class="styled" style="font-size: 20px">
+						<thead><td>Mode</td><td>I (dispersive/selective)</td></thead>
+						<tr><td>ESI (electron spectroscopic imaging)</td><td>I(x, y/ΔW)</td></tr>
+						<tr><td colspan="2">EELS (electron energy-loss spectroscopy)</td></tr>
+						<tr><td class="right">Spectrum mode</td><td>I(ΔE/ΔA)</td></tr>
+						<tr><td class="right">Space-dispersive mode</td><td>I(x, ΔE/Δy)</td></tr>
+					</table>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="2400" data-y="1000">
+				<div class="head">
+					ESI data cube
+				</div>
+				<div class="contend">
+					<img size="100%" src="Daten/Cube_ESI.svg" />
+				</div>
+			</div>
+
+			<div class="step" data-x="2400" data-y="1000" data-z="-1">
+				<ul>
+					<li>high number of lateral channels</li>
+					<li>limited number of energy channels</li>
+					<li>limited energy resolution</li>
+				</ul>
+			</div>
+
+			<div class="step slide" data-x="3600" data-y="1000">
+				<div class="head">
+					EELS data cube
+				</div>
+				<div class="contend">
+					<img size="100%" src="Daten/Cube_EELS.svg" />
+				</div>
+			</div>
+			<div class="step" data-x="3600" data-y="1000" data-z="-1">
+				<ul>
+					<li>high number of energy channels</li>
+					<li>high energy resolution</li>
+					<li>limited number of lateral channels</li>
+					<li>lateral resolution can be very high</li>
+				</ul>
+			</div>
+
+			<div class="step slide" data-x="4800" data-y="1000">
+				<div class="head">
+					SR-EELS data cube
+				</div>
+				<div class="contend">
+					<img size="100%" src="Daten/Cube_SR-EELS.svg" />
+				</div>
+			</div>
+			<div class="step" data-x="4800" data-y="1000" data-z="-1">
+				<ul>
+					<li>high number of energy channels</li>
+					<li>high energy resolution</li>
+					<li>only one lateral axis</li>
+					<li>high lateral resolution (x-axis)</li>
+				</ul>
+			</div>
+			<div class="step slide" data-x="6000" data-y="1000">
+				<div class="head">
+					SR-EELS - field of view
+				</div>
+				<div class="contend">
+					<img size="100%" src="Daten/SR-EELS_default.svg" />
+					<p>By default, only up to 25% of our camera area is used.</p>
+				</div>
+			</div>
+			<div class="step slide" data-x="7200" data-y="1000">
+				<div class="head">
+					SR-EELS - manipulating the magnification
+				</div>
+				<div class="contend">
+					<p>How to manipulate the magnification of the SR-EELS data-set?</p>
+					<img size="100%" src="Daten/Schema_EELS.svg" />
+					<ul>
+						<li><strong>projective I</strong> controls the lateral resolution (nm/px)<br />
+						no effect on the size at the camera</li>
+						<li>by default, the <strong>energy-filter</strong> is not adjusted</li>
+						<li><strong>projective II</strong> controls the lateral and energy resolution (more details on the next slides)</li>
+					</ul>
+				</div>
+			</div>
+
+<!--@NPPBookmarkSpecMag-->
+			<div id="SpecMag" class="step sectionTitle" data-x="8400" data-y="500" data-z="1">
+				<h1>SpecMag - Some quantitative values</h1>
+			</div>
+
+			<div class="step slide" data-x="8400" data-y="500">
+				<div class="head">
+					Projective II - SpecMag values
+				</div>
+				<div class="contend">
+					<table class="styled">
+						<thead><td>SpecMag value</td><td>energy range</td><td>lateral extend</td></thead>
+						<tr><td>315<br ><div style="font-size: 50%;">315 is the highest available value</diV></td><td>~83 eV</td><td>~25%</td></tr>
+						<tr><td>250</td><td>~105 eV</td><td>~19%</td></tr>
+						<tr><td>200</td><td>~130 eV</td><td>~16%</td></tr>
+						<tr><td>163</td><td>~162 eV</td><td>~13%</td></tr>
+						<tr><td>125</td><td>~212 eV</td><td>~10%</td></tr>
+						<tr><td>100</td><td>~273 eV</td><td>~8%</td></tr>
+						<tr><td colspan="3">There are some more ...</td></tr>
+					</table>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="9600" data-y="500">
+				<div class="head">
+					SpecMag - energy range
+				</div>
+				<div class="contend">
+					<img size="100%" src="Bilder/SpecMag.png" />
+				</div>
+			</div>
+
+
+			<div class="step slide" data-x="10800" data-y="500">
+				<div class="head">
+					SpecMag - lateral width
+				</div>
+				<div class="contend">
+					<img size="100%" src="Bilder/SpecMag_widthZLP.png" />
+				</div>
+			</div>
+
+			<div class="step slide" data-x="-1200" data-y="500" data-rotate="180">
+				<div class="head">
+					Gnuplot - energy range
+				</div>
+				<div class="contend">
+<pre class="prettyprint linenums" data-lang="gnuplot">
+set encoding utf8
+unset title
+unset key
+set sample 10000
+set terminal pngcairo size 1920,1080 enhanced \
+	font 'Verdana,40' dashed linewidth 4
+set xlabel "SpecMag [a.u.]"
+set xrange [100:350]
+set ylabel "energy range [eV]"
+set yrange [0:*]
+f(x) = a*x**b
+a = 0; b = -1;
+fit f(x) "SpecMag.dat" using 1:2 via a,b
+set label sprintf("f(x) = %.0f·x^{%.2f}", a, b) at 200,200
+set output "../Bilder/SpecMag.png"
+plot "" using 1:2 with points pointsize 4, f(x) with lines
+</pre>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="-2400" data-y="500" data-rotate="180">
+				<div class="head">
+					Gnuplot - lateral width
+				</div>
+				<div class="contend">
+<pre class="prettyprint linenums" data-lang="gnuplot">
+...
+unset label
+set ylabel "width of the ZLP [px]"
+set yrange [0:4096]
+f(x) = a*x**b
+a = 3; b = 1;
+fit f(x) "" using 1:3:3 via a,b
+set label sprintf("f(x) = %.0f·x^{%.2f}", a, b) at 200,2048
+set arrow from 315,0 to 315,4096 nohead linecolor rgb "red"
+set label "max. SpecMag -> " at 315,3500 right
+set output "../Bilder/SpecMag_widthZLP.png"
+plot "" using 1:3 with points pointsize 4, \
+	f(x) with lines
+</pre>
+				</div>
+			</div>
+
+<!--@NPPBookmarkEFA-->
+			<div id="EFA" class="step sectionTitle" data-x="8400" data-y="1500" data-z="1">
+				<h1>Zeiss WinTEM - Energy Filter Align (EFA)</h1>
+			</div>
+			<div class="step slide" data-x="8400" data-y="1500">
+				<div class="head">
+					Zeiss WinTEM - Energy Filter Align (EFA)
+				</div>
+				<div class="contend">
+					<ul>
+						<li>can be found at <code>Service > Energy Filter...</code></li>
+						<li>control of 7 filter elements</li>
+						<ul>
+							<li>4 dipole elements<br />
+								-> shift the spectrum
+							</li>
+							<li>3 quadrupole elements<br />
+								-> deform and rotate the spectrum
+							</li>
+						</ul>
+						<li>deform means to compress or expand the spectrum in lateral direction</li>
+						<ul>
+							<li>deform x (QSinK7): increase the lateral size</li>
+							<li>deform y (QSinK4): controls the focus of this axis</li>
+							<li>rotation (QCosK4)</li>
+						</ul>
+					</ul>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="9600" data-y="1500">
+				<div class="head">
+					EFA - Examples
+				</div>
+				<div class="contend">
+					<table class="nomargin">
+						<tr>
+							<td><dt><img src="Bilder/EFA_QSinK7=0.png" width="100%"/></dt><dd>SpecMag=315 and QSinK7=0%</dd></td>
+							<td><dt><img src="Bilder/EFA_QSinK7=-11.png" width="100%"/></dt><dd>SpecMag=315 and QSinK7=-11%</dd></td>
+						</tr>
+					</table>
+					<p>The optimized value of QSinK7 increases the lateral magnification by about 4 times. QSinK4 depends on QSinK7.</p>
+				</div>
+			</div>
+
+<!--@NPPBookmarkAberrations-->
+			<div id="aberrations" class="step sectionTitle" data-x="0" data-y="2000" data-z="1">
+				<h1>Aberrations</h1>
+			</div>
+			<div class="step slide title" data-x="0" data-y="2000">
+				<div class="head">
+					Aberrations
+				</div>
+				<div class="contend">
+					<ul>
+						<li>The lateral extend decreases with increasing energy loss
+							<ul>
+								<li>This aberration is visible at all previous images</li>
+								<li>Described by a polynomial of 2nd degree</li>
+							</ul>
+						</li>
+					</ul>
+					<table class="nomargin">
+						<tr>
+							<td><dt><img src="Bilder/polynom1.png" width="100%"/></dt>
+							<dd>Fit at top border</dd></td>
+							<td><dt><img src="Bilder/polynom2.png" width="100%"/></dt>
+							<dd>Fit at bottom border</dd></td>
+						</tr>
+						<tr><td style="padding-top: 20px; font-size: 60%;" colspan="2">(This plots were automatically created by <a href="https://github.com/EFTEMj/EFTEMj/blob/master/Scripts%2BMacros/SR-EELS_characterisation.ijm">SR-EELS_characterisation.ijm</a> and they are only used to check the tabulated results.)</td></tr>
+					</table>
+					<ul>
+						<li>To be continued ...</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="step slide title" data-x="1200" data-y="2000" data-z="0">
+				<div class="head">
+					Aberrations - Method of characterization
+				</div>
+				<div class="contend">
+					<img size="100%" src="Bilder/characterization_montage.png" />
+				</div>
+			</div>
+
+			<div class="step slide" data-x="1200" data-y="1500" data-z="1000">
+				<div class="head">
+					Aberrations - Method of characterization
+				</div>
+				<div class="contend">
+					<dt><img size="100%" src="Bilder/characterization_marked_montage.png" /></dt>
+					<dd>1024px by 1024px sections of 4096px by 4096px images.<br />The marks at the borders and the centre of the signal were automatically created by <a href="https://github.com/EFTEMj/EFTEMj/blob/master/Scripts%2BMacros/SR-EELS_characterisation.ijm">SR-EELS_characterisation.ijm</a>.</dd>
+					<p>The ImageJ macro uses a combination of a Gaussian fit and the build-in threshold routine to detect the borders of the signal. At the given example 64 energy channels are <a href="">"binned"</a> for more reliable results.</p>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="1800" data-y="1250" data-z="1500" data-scale="0.5">
+				<div class="head">
+					Aberrations - Method of characterization
+				</div>
+				<div class="contend">
+<pre class="prettyprint linenums">
+"y-pos"		"x-pos"		"left"	"right"	"width"		"right-left"
+287.268544656	2073.198497962	2027	2119	92.40625		92
+351.320644408	2072.148283952	2026	2117	91.859375	91
+415.333656825	2071.055050554	2025	2116	91.234375	91
+479.405808971	2069.943503637	2024	2114	90.046875	90
+543.446612238	2068.870190755	2024	2113	89.21875		89
+607.375873543	2067.87358088	2023	2111	88.09375		88
+671.393477567	2066.938270344	2023	2110	87.6875		87
+735.43223332	2066.045941075	2022	2108	86.015625	86
+799.484300885	2065.08104012	2022	2107	85.234375	85
+863.45281401	2064.225598582	2021	2106	84.546875	85
+927.518424668	2063.320875348	2021	2105	84.234375	84
+991.61449526	2062.567051694	2021	2103	82.453125	82
+1055.533906673	2061.728915286	2020	2102	81.5		82
+1119.467179822	2061.198212746	2020	2101	81.015625	81
+1183.610286657	2060.351984598	2020	2100	80.375		80
+...
+</pre>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="2400" data-y="1500" data-z="1000">
+				<div class="head">
+					Aberrations - 3D-visualization
+				</div>
+				<div class="contend">
+					<dt><img height="625px" src="Bilder/3D_h(y)_SpecMag=315_QSinK7=0_225eV.png"/></dt>
+					<dd style="margin-top: -40px">$$h(y) = a\cdot y^2 + b\cdot y + c$$</dd>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="2400" data-y="2000" data-z="0">
+				<div class="head">
+					Aberrations - 3D-visualization
+				</div>
+				<div class="contend">
+					<dt><img height="625px" src="Bilder/3D_f(x,y)_SpecMag=315_QSinK7=0_225eV.png"/></dt>
+					<dd style="margin-top: -50px">$$f(x,y) = \sum^2_{i,j=0}a_{ij}\cdot x^i y^j$$</dd>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="-1200" data-y="2000" data-rotate="180">
+				<div class="head">
+					Gnuplot - 3D-visualization
+				</div>
+				<div class="contend">
+<pre class="prettyprint linenums" data-lang="gnuplot">
+...
+set isosample 16
+temp_table = temp_folder."/temp.txt"
+set table temp_table
+set xrange [*:*]
+set yrange [*:*]
+input_filename(n) = sprintf("../".input_prefix."%d.txt", n)
+splot for [i=index_start:index_stop:index_inc] input_filename(i) \
+	using (bin*$4-cam_width/2):(bin*$2-cam_width/2):(bin*$6) with points
+unset table
+set output temp_folder."/width.png"
+plot for [i=index_start:index_stop:index_inc] input_filename(i) \
+	using 1:(bin*$6) notitle
+z_min = 10*floor(GPVAL_Y_MIN/10)
+z_max = 10*ceil(GPVAL_Y_MAX/10)
+...
+</pre>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="-2400" data-y="2000" data-rotate="180">
+				<div class="head">
+					Gnuplot - 3D-visualization
+				</div>
+				<div class="contend">
+<pre class="prettyprint linenums" data-lang="gnuplot">
+...
+set zrange [z_min:z_max]
+set xyplane at z_min
+set title "3D View with f(x,y) - ".head
+output_file = output_folder."3_3D_f(x,y)_".output.".png"
+set output output_file
+f(x,y) = a00 + a10*x + a20*x**2 + a01*y + a11*x*y + a21*x**2*y + a02*y**2 \
+	+ a12*x*y**2 + a22*x**2*y**2
+a00 = 1.0; a10 = 1.0; a20 = 1.0;
+a01 = 1.0; a11 = 1.0; a21 = 1.0;
+a02 = 1.0; a12 = 1.0; a22 = 1.0;
+fit f(x,y) temp_table using ($1):($2):($3):(1) \
+	via a00, a10, a20, a01, a11, a21, a02, a12, a22
+splot f(x,y/disp_y) title "f(x,y)" with lines linestyle 3,\
+temp_table using ($1):($2*disp_y):(f($1,$2)) title "f(x,y)" with lines linestyle 2, \
+temp_table using ($1):($2*disp_y):($3) title "Messwerte" with points linestyle 1
+...
+</pre>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="-3600" data-y="2000" data-rotate="180">
+				<div class="head">
+					Gnuplot - 3D-visualization
+				</div>
+				<div class="contend">
+<pre class="prettyprint linenums" data-lang="gnuplot">
+...
+set fit logfile "fit_".output.".txt"
+set print "summery_".output.".txt"
+print "f(x,y) = a00 + a10*x + a20*x**2 + a01*y + a11*x*y + a21*x**2*y \
+	+ a02*y**2 + a12*x*y**2 + a22*x**2*y**2"
+printstr(M, N) = \
+	sprintf('print "a%d%d = ", a%d%d, " /pm ", a%d%d_err', M, N, M, N, M, N)
+do for [i=0:2] {
+	do for [j=0:2] {
+		eval(printstr(j, i))
+	}
+}
+...
+</pre>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="-4800" data-y="2000" data-z="1000" data-rotate="180">
+				<div class="head">
+					Aberrations - Heatmap-visualization
+				</div>
+				<div class="contend">
+					<dt><img height="625px" src="Bilder/Heat-Map_f(x,y)_SpecMag=315_QSinK7=0_225eV.png"/></dt>
+					<dd>Draft version! The shown pairs of borders will be replaced soon.</dd>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="-4800" data-y="2000" data-rotate="180">
+				<div class="head">
+					Gnuplot - Heatmap-visualization
+				</div>
+				<div class="contend">
+<pre class="prettyprint linenums" data-lang="gnuplot">
+...
+set view map
+set palette defined (0 '#7f0000', \
+	...
+	8 '#000090')
+set cblabel "spectrum width [px]"
+set cbrange [z_min:z_max]
+set table table_f
+splot f(x,y) with points
+unset table
+set output output_file
+plot table_f using ($1):($2*disp_y):($3) with image , \
+for [i=index_start:index_stop:index_inc] input_filename(i) \
+	using (bin*$4-2048):((bin*$2-2048)*disp_y) notitle with points linestyle 1 ,\
+for [i=index_start:index_stop:index_inc] input_filename(i) \
+	using (bin*$5-2048):((bin*$2-2048)*disp_y) notitle with points linestyle 1
+...
+</pre>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="3600" data-y="2000">
+				<div class="head">
+					Aberrations
+				</div>
+				<div class="contend">
+					<ul>
+						<li>The lateral extend decreases with increasing energy loss
+							<ul>
+								<li>This aberration is visible at all previous images</li>
+								<li>Described by a polynomial of 2nd degree</li>
+							</ul>
+						</li>
+						<li>The lateral width changes at each energy channel
+							<ul>
+								<li>Highest value at the centre</li>
+								<li>The decrease limits the field of view</li>
+								<li>Described by a polynomial of 2nd degree</li>
+							</ul>
+						</li>
+					</ul>
+					<dt style="margin-top: -20px;"><img src="Bilder/width_vs_pos.png" height="100%"/></dt>
+					<dd>Width vs lateral position for \(\Delta E = 0\)</dd>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="4800" data-y="2000">
+				<div class="head">
+					Aberrations - 2D-visualization
+				</div>
+				<div class="contend">
+					<p>\(\Delta E\) represents the energy offset at the given dataset. Electrons that traverse the energy filter at an optimal ray pass will have an energy offset of \(\Delta E = 0\).</p>
+					<p>\(y_n\) is the position, where the polynomial \(f_n\) intersects the axis with \(\Delta E = 0\).</p>
+					<p>$$ \Rightarrow f_n(0) = y_n$$</p>
+					<div class="linebehind"></div>
+					<p>$$f_n(\Delta E) = \sum^2_{i,j=0}a_{ij}\cdot y_n^j\cdot \Delta E^i$$</p>
+					<p style="text-align: center;">with \(a_i = a_{i0} + a_{i1}\cdot y_n + a_{i2}\cdot y_n^2\)</p>
+					<p>$$\Rightarrow f_n(\Delta E) = \sum^2_{i=0}a_i\cdot \Delta E^i$$</p>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="6000" data-y="2000">
+				<div class="head">
+					Aberrations - 2D-visualization
+				</div>
+				<div class="contend">
+					<dt><img height="600px" src="Bilder/Borders_SpecMag=315_QSinK7=0_225eV.png"/></dt>
+					<dd style="margin-top: -20px">$$f_n(\Delta E) = \sum^2_{i,j=0}a_{ij}\cdot y_n^j\cdot \Delta E^i$$</dd>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="-6000" data-y="2000" data-rotate="180">
+				<div class="head">
+					Gnuplot - 2D-visualization
+				</div>
+				<div class="contend">
+<pre class="prettyprint linenums" data-lang="gnuplot">
+...
+set terminal unknown
+set table temp_folder."/borders.txt"
+set xrange [-2048:2048]
+set yrange [*:*]
+plotstr3D(N) = sprintf('splot input_filename(%d) \
+	using (bin*$2-2048):(bin*$4-2048):(f%dL(0)) with points, \
+	input_filename(%d) using (bin*$2-2048):(bin*$5-2048):(f%dR(0)) \
+	with points', N, N, N, N)
+plotstr3DL(N) = sprintf('replot input_filename(%d) \
+	using (bin*$2-2048):(bin*$4-2048):(f%dL(0)) with points', N, N)
+plotstr3DR(N) = sprintf('replot input_filename(%d) \
+	using (bin*$2-2048):(bin*$5-2048):(f%dR(0)) with points', N, N)
+eval(plotstr3D(index_start))
+...
+</pre>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="-7200" data-y="2000" data-rotate="180">
+				<div class="head">
+					Gnuplot - 2D-visualization
+				</div>
+				<div class="contend">
+<pre class="prettyprint linenums" data-lang="gnuplot">
+...
+do for [i=index_start+index_inc:index_stop:index_inc] {
+	eval(plotstr3DL(i))
+	eval(plotstr3DR(i))
+}
+replot
+...
+fit f(x,y) table3D using ($1):($3):(stringcolumn(4) eq "u"?1/0:$2):(1) \
+	via a00, a10, a20, a01, a11, a21, a02, a12, a22
+set table temp_folder."/field.txt"
+...
+plot table_field using ($2):($1*disp_y) title "f(x,y)" with lines \
+	linestyle 3 linewidth line_width-1, \
+table3D using (stringcolumn(4) eq "u"?1/0:$2):($1*disp_y) \
+	title "&{xxx}Messwerte" with points
+...
+</pre>
+				</div>
+			</div>
+
+<!--@NPPBookmarkCorrection-->
+			<div id="correction" class="step sectionTitle" data-x="0" data-y="3000" data-z="1">
+				<h1>Correction by image processing</h1>
+			</div>
+
+			<div class="step slide title" data-x="0" data-y="3000">
+				<div class="head">
+					Correction - Remark
+				</div>
+				<div class="contend">
+					<img class="rotate270" height="650px" src="Bilder/Borders_SpecMag=315_QSinK7=0_225eV.png"/>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="1200" data-y="3000">
+				<div class="head">
+					Correction - Overview
+				</div>
+				<div class="contend">
+					<p style="margin-top: -25px">$$f_n(\Delta E) = \sum^2_{i=0}{a_n}_i\cdot \Delta E^i\\
+					\Rightarrow f_n(x) = \sum^2_{i=0}{a_n}_i\cdot x^i$$</p>
+					<ul>
+						<li>\(f_n(x)\) can be used to describe a coordinate transformation.</li>
+						<li>\(x\) and \(y\) are the coordinates of the distorted dataset.</li>
+						<li>\(x^*\) and \(y^*\) are the coordinates of the corrected dataset.</li>
+					</ul>
+					<p>$$x^* = s_{y^*}(x) = \int_0^{x^*} \sqrt{1+\left(f_{y^*}'(z)\right)^2}\mathrm{\ d}z$$</p>
+					<p>$$y = f_{y^*}(x)$$</p>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="2400" data-y="2500" data-z="1000">
+				<div class="head">
+					Correction - The x-axis (1)
+				</div>
+				<div class="contend">
+					<p>$$x^* = s(x) = \int_0^x \sqrt{1+\left(f_{y^*}'(z)\right)^2}\mathrm{\ d}z$$</p>
+					<p>$$\mathrm{with\quad } a = 4a_2^2\mathrm{,\quad } b = 4a_1a_2 \mathrm{\quad and\quad } c = a_2^2+1$$</p>
+					<p>$$\Rightarrow s(x) = \int_0^x \sqrt{az^2+bz+c}\mathrm{\ d}z$$</p>
+					<p>$$\mathrm{with\quad } g'(y) = \frac{1}{f'(x)}\quad and\quad g(y) = f^{-1}(y)$$</p>
+					<p>$$\Rightarrow x = s^{-1}(x^*) = \int_0^{x^*} \frac{\mathrm{\ d}z}{\sqrt{az^2+bz+c}}$$</p>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="2400" data-y="3000">
+				<div class="head">
+					Correction - The x-axis (2)
+				</div>
+				<div class="contend">
+					<p>$$x = s^{-1}(x^*) = \int_0^{x^*} \frac{\mathrm{\ d}z}{\sqrt{az^2+bz+c}}$$</p>
+					<p>$$x = \left.\frac{1}{\sqrt{a}}\ln\left|2\sqrt{a(az^2+bz+c)}+2az+b\right|\right|^{z=x^*}_{z=0}$$</p>
+					<p>$$\mathrm{for\quad }a = 4a_2^2 > 0$$</p>
+					<p>$$x = \left.\frac{1}{\sqrt{a}}\arcsin^{-1}\frac{2az+b}{\sqrt{4ac-b^2}}\right|^{z=x^*}_{z=0}$$</p>
+					<p>$$\mathrm{for\quad }4ac-b^2 = 4a_2^2(7a_1^2 + 11) > 0$$</p>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="3600" data-y="3000">
+				<div class="head">
+					Correction - Full transformation
+				</div>
+				<div class="contend">
+					<h1>x-coordinate:</h1>
+					<p>$$x = \left.\frac{1}{\sqrt{a}}\arcsin^{-1}\frac{2\,az+b}{\sqrt{4\,ac-b^2}}\right|^{z=x^*}_{z=0}$$</p>
+					<p>$$= \frac{1}{\sqrt{a}}\left(\arcsin^{-1}\frac{2\,ax^*+b}{\sqrt{4\,ac-b^2}} - \arcsin^{-1}\frac{b}{\sqrt{4\,ac-b^2}}\right)$$</p>
+					<p>$$\mathrm{with\quad } a = 4\,a_2^2(y^*)\mathrm{,\quad } b = 4\,a_1(y^*)a_2(y^*) \mathrm{\quad and\quad } c = a_2^2(y^*)+1$$</p>
+					<h1>y-coordinate:</h1>
+					<p>$$y = f_{y^*}(x) = a_2(y^*)x^2+a_1(y^*)x+a_0(y^*)$$</p>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="4800" data-y="3000">
+				<div class="head">
+					Correction - Example (QSinK7 = 0%)
+				</div>
+				<div class="contend">
+					<dt><img height="300px" src="Bilder/QSinK7=0.png"/></dt>
+					<dd>Uncorrected data set at the Chromium L-edges.</dd>
+					<dt><img height="300px" src="Bilder/QSinK7=0_corrected.png"/></dt>
+					<dd>Corrected data set (no intensity correction) at the Chromium L-edges.</dd>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="6000" data-y="3000">
+				<div class="head">
+					Correction - Example (QSinK7 = -11%)
+				</div>
+				<div class="contend">
+					<dt><img height="300px" src="Bilder/QSinK7=-11.png"/></dt>
+					<dd>Uncorrected data set at the Chromium L-edges.</dd>
+					<dt><img height="300px" src="Bilder/QSinK7=-11_corrected.png"/></dt>
+					<dd>Corrected data set (no intensity correction) at the Chromium L-edges.</dd>
+				</div>
+			</div>
+
+			<div class="step slide" data-x="7200" data-y="3000">
+				<div class="head">
+					Correction - Correct the Intensity
+				</div>
+				<div class="contend">
+					<ul>
+						<li>
+							The size of each pixel changes.<br />
+							\(\Rightarrow\)The intensity per pixel changes accordingly.
+						</li>
+						<li>A corrected pixel will overlay several uncorrected pixels.</li>
+					</ul>
+					<dt><img src="Bilder/Pixel.svg" height="300"/></dt>
+					<dd>The intensity of the corrected pixel is made up of the partial intensities of several uncorrected pixels.</dd>
+					<p>Details are presented at the blackboard!</p>
+				</div>
+			</div>
+
+			<div id="summary" class="step slide" data-x="0" data-y="4000">
+				<div class="head">
+					Summary
+				</div>
+				<div class="contend">
+					<ul class="morespace">
+						<li>The imaging filter can be adjusted by several controls, but only QSinK7 (deform x) and QSinK4 (deform y) are useful.</li>
+						<li>The lateral magnification can be adjusted independently from the energy magnification.</li>
+						<li>The distortion of the imaging filter can be described by a function series of simple polynomials of 2nd degree.</li>
+						<li>The main problem of the correction is the mapping of calculated continuous coordinates to discrete coordinates of the recorded images.</li>
+					</ul>
+				</div>
+			</div>
+
+			<div id="outlook" class="step slide" data-x="1200" data-y="4000">
+				<div class="head">
+					Outlook
+				</div>
+				<div class="contend">
+					<ul class="morespace">
+						<li>This presentation will be extended to give a general overview to SR-EELS at the Libra 200FE.</li>
+						<li>The algorithm for the correction of the intensity is not yet completed. The goal is to finish it next week.</li>
+						<li>I have to investigate if a measurement is reproducible, or if it is necessary to run the calibration procedure each time.</li>
+						<li>An approach is required to calibrate the lateral axis<br /> (The calibration for the energy axis can be taken from EELS mode).</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="step" data-x="2400" data-y="4000">
+				<p style="font-size: 200%">Thank you for your attention!</p>
+			</div>
+
+        </div>
+
+		<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=default"></script>
+        <script src="js/impress.js"></script>
+        <script>impress().init();</script>
+    </body>
+</html>
