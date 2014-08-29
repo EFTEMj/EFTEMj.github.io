@@ -409,6 +409,7 @@ dd {
 	margin: 100px 10px 100px 10px;
 	padding: 0px 25px 0px 25px;
 	background: rgba(62, 62, 59, 0.2); /* color: 20% Pantone Black 7 */
+	border: 2px solid rgb(0, 157, 209); /* color: Pantone 312 */
 	border-radius: 30px 30px 30px 30px;
 }
 

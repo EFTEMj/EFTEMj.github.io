@@ -297,7 +297,7 @@ u { color: 'umber' }
 				Include a website using an iframe
 			</div>
 			<div class="contend">
-				<iframe size="100%" src='http://www.fiji.sc'></iframe>
+				<iframe size="100%" src='http://imagej.nih.gov/ij/'></iframe>
 			</div>
 		</div>
 
@@ -684,41 +684,50 @@ u { color: 'umber' }
 				Correction - Overview
 			</div>
 			<div class="contend">
-				<p style="margin-top: -25px">$$f_n(\Delta E) = \sum^2_{i=0}{a_n}_i\cdot \Delta E^i\\
-				\Rightarrow f_n(x) = \sum^2_{i=0}{a_n}_i\cdot x^i$$</p>
 				<ul>
-					<li>\(f_n(x)\) can be used to describe a coordinate transformation.</li>
-					<li>\(x\) and \(y\) are the coordinates of the distorted dataset.</li>
-					<li>\(x^*\) and \(y^*\) are the coordinates of the corrected dataset.</li>
+					<li>\(\Delta E\) is shown on the horizontal axis of the SR-EELS dataset.</li>
+					<li>\(x\) is shown on the vertical axis of the SR-EELS dataset.</li>
+					<li>\(\Delta \tilde{E}\) and \(\tilde{x}\) are the related curved cooradinats.</li>
+					<li>\(\tilde{x}_j(\Delta E)\) describes the curve where the same lateral position is recorded on the detector.</li>
 				</ul>
-				<p>$$x^* = s_{y^*}(x) = \int_0^{x^*} \sqrt{1+\left(f_{y^*}'(z)\right)^2}\mathrm{\ d}z$$</p>
-				<p>$$y = f_{y^*}(x)$$</p>
-			</div>
-		</div>
-
-		<div class="step slide" data-x="2400" data-y="2500" data-z="1000">
-			<div class="head">
-				Correction - The x-axis (1)
-			</div>
-			<div class="contend">
-				<p>$$x^* = s(x) = \int_0^x \sqrt{1+\left(f_{y^*}'(z)\right)^2}\mathrm{\ d}z$$</p>
-				<p>$$\mathrm{with\quad } a = 4a_2^2\mathrm{,\quad } b = 4a_1a_2 \mathrm{\quad and\quad } c = a_2^2+1$$</p>
-				<p>$$\Rightarrow s(x) = \int_0^x \sqrt{az^2+bz+c}\mathrm{\ d}z$$</p>
-				<p>$$\mathrm{with\quad } g'(y) = \frac{1}{f'(x)}\quad and\quad g(y) = f^{-1}(y)$$</p>
-				<p>$$\Rightarrow x = s^{-1}(x^*) = \int_0^{x^*} \frac{\mathrm{\ d}z}{\sqrt{az^2+bz+c}}$$</p>
+				<p>$$\tilde{x}_j(\Delta E) = \sum_{i=0}^m\tilde{a}_{ij}\cdot \Delta E^i$$</p>
+				<p>These equations can be combined by using \(x_0 = \tilde{x}_j(\Delta E = 0)\).</p>
+				<p>$$\Rightarrow\tilde{x}(\Delta E,x_0) = \sum_{i,j=0}^{m,n}\tilde{a}_{ij}\cdot \Delta E^i\cdot x_0^j$$</p>
 			</div>
 		</div>
 
 		<div class="step slide" data-x="2400" data-y="3000">
 			<div class="head">
-				Correction - The x-axis (2)
+				Correction - The \(\Delta E\)-axis (1)
 			</div>
 			<div class="contend">
-				<p>$$x = s^{-1}(x^*) = \int_0^{x^*} \frac{\mathrm{\ d}z}{\sqrt{az^2+bz+c}}$$</p>
-				<p>$$x = \left.\frac{1}{\sqrt{a}}\ln\left|2\sqrt{a(az^2+bz+c)}+2az+b\right|\right|^{z=x^*}_{z=0}$$</p>
-				<p>$$\mathrm{for\quad }a = 4a_2^2 > 0$$</p>
-				<p>$$x = \left.\frac{1}{\sqrt{a}}\arcsin^{-1}\frac{2az+b}{\sqrt{4ac-b^2}}\right|^{z=x^*}_{z=0}$$</p>
-				<p>$$\mathrm{for\quad }4ac-b^2 = 4a_2^2(7a_1^2 + 11) > 0$$</p>
+				<p>If the energy loss is affected by the curved axes, we can transform it by calculating the arc length.
+				<p style="padding-top: 75px;">$$\Delta \tilde{E} = s_{\tilde{x}}(\Delta E) = \int_0^{\Delta E} \sqrt{1+\left(f_{\tilde{x}}'(z)\right)^2}\mathrm{\ d}z$$</p>
+				<p>$$\mathrm{with\quad} a = 4a_2^2\mathrm{,\quad } b = 4a_1a_2 \mathrm{\quad and\quad } c = a_2^2+1$$</p>
+				<p>$$\mathrm{and\quad} a_h = a_{h0} + a_{h1}\cdot x_0 + a_{h2}\cdot x_0^2$$</p>
+				<p>$$\Rightarrow \Delta \tilde{E}(\Delta E) = \int_0^{\Delta E} \sqrt{a\cdot z^2+b\cdot z+c}\mathrm{\ d}z$$</p>
+			</div>
+		</div>
+
+		<div class="step slide overlay" data-x="2400" data-y="3000" data-z="1">
+			<div class="head">
+				Correction - The  \(\Delta E\)-axis (2)
+			</div>
+			<div class="contend">
+				<p>$$\Rightarrow \Delta \tilde{E}(\Delta E) = \int_0^{\Delta E} \sqrt{a\cdot z^2+b\cdot z+c}\mathrm{\ d}z$$</p>
+				<p>$$\mathrm{with\quad} g'(y) = \frac{1}{f'(x)}\quad and\quad g(y) = f^{-1}(y)$$</p>
+				<p>$$\Rightarrow \Delta E = s^{-1}(\Delta \tilde{E}) = \int_0^{\Delta \tilde{E}} \frac{\mathrm{d\,}z}{\sqrt{az^2+bz+c}}$$</p>
+			</div>
+		</div>
+
+		<div class="step slide overlay" data-x="2400" data-y="3000" data-z="2">
+			<div class="head">
+				Correction - The  \(\Delta E\)-axis (3)
+			</div>
+			<div class="contend">
+				<p style="padding-top: 75px;">$$\Delta E(\Delta \tilde{E}) = \int_0^{\Delta \tilde{E}} \frac{\mathrm{d\,}z}{\sqrt{az^2+bz+c}}$$</p>
+				<p>$$\Rightarrow\Delta E(\Delta \tilde{E}) = \left.\frac{1}{\sqrt{a}}\arcsin^{-1}\frac{2az+b}{\sqrt{4ac-b^2}}\right|^{z=\Delta \tilde{E}}_{z=0}$$</p>
+				<p>$$\mathrm{for\quad }4ac-b^2 = 4a_2^2\cdot(7a_1^2 + 11) > 0$$</p>
 			</div>
 		</div>
 
@@ -727,12 +736,12 @@ u { color: 'umber' }
 				Correction - Full transformation
 			</div>
 			<div class="contend">
-				<h1>x-coordinate:</h1>
-				<p>$$x = \left.\frac{1}{\sqrt{a}}\arcsin^{-1}\frac{2\,az+b}{\sqrt{4\,ac-b^2}}\right|^{z=x^*}_{z=0}$$</p>
-				<p>$$= \frac{1}{\sqrt{a}}\left(\arcsin^{-1}\frac{2\,ax^*+b}{\sqrt{4\,ac-b^2}} - \arcsin^{-1}\frac{b}{\sqrt{4\,ac-b^2}}\right)$$</p>
-				<p>$$\mathrm{with\quad } a = 4\,a_2^2(y^*)\mathrm{,\quad } b = 4\,a_1(y^*)a_2(y^*) \mathrm{\quad and\quad } c = a_2^2(y^*)+1$$</p>
-				<h1>y-coordinate:</h1>
-				<p>$$y = f_{y^*}(x) = a_2(y^*)x^2+a_1(y^*)x+a_0(y^*)$$</p>
+				<h1>\(\Delta E\)-coordinate:</h1>
+				<p>$$\Delta E(\Delta \tilde{E}) = \left.\frac{1}{\sqrt{a}}\arcsin^{-1}\frac{2az+b}{\sqrt{4ac-b^2}}\right|^{z=\Delta \tilde{E}}_{z=0}$$</p>
+				<p>$$= \frac{1}{\sqrt{a}}\left(\textrm{arcsinh}\frac{2\,a\cdot\Delta \tilde{E}+b}{\sqrt{4\,ac-b^2}} - \textrm{arcsinh}\frac{b}{\sqrt{4\,ac-b^2}}\right)$$</p>
+				<p>$$\mathrm{with\quad } a = 4\,a_2^2\mathrm{,\quad } b = 4\,a_1a_2 \mathrm{\quad and\quad } c = a_2^2+1$$</p>
+				<h1>\(x\)-coordinate:</h1>
+				<p>$$x = f_{\tilde{x}}(\Delta \tilde{E}) = a_2\cdot \Delta \tilde{E}^2+a_1\cdot \Delta \tilde{E}+a_0$$</p>
 			</div>
 		</div>
 
@@ -851,7 +860,7 @@ if ("ontouchstart" in document.documentElement) {
 <script type="text/javascript"
 			src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=default"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 
 <!--
     
