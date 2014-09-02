@@ -93,16 +93,7 @@ body {
     color: rgb(62, 62, 59); /* color: Pantone Black 7 */
 
     background: rgba(62, 62, 59, 0.2); /* color: 20% Pantone Black 7 */
-    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgba(62, 62, 59, 0.3)), to(rgba(62, 62, 59, 0.1)));
-    background: -webkit-radial-gradient(rgba(62, 62, 59, 0.3), rgba(62, 62, 59, 0.1));
-    background:    -moz-radial-gradient(rgba(62, 62, 59, 0.3), rgba(62, 62, 59, 0.1));
-    background:     -ms-radial-gradient(rgba(62, 62, 59, 0.3), rgba(62, 62, 59, 0.1));
-    background:      -o-radial-gradient(rgba(62, 62, 59, 0.3), rgba(62, 62, 59, 0.1));
-    background:         radial-gradient(rgba(62, 62, 59, 0.3), rgba(62, 62, 59, 0.1));
-	-webkit-font-smoothing: antialiased;
-	-moz-font-smoothing: antialiased;
-	-ms-font-smoothing: antialiased;
-	-o-font-smoothing: antialiased;
+    background: radial-gradient(rgba(62, 62, 59, 0.3), rgba(62, 62, 59, 0.1));
 }
 
 /*
@@ -155,12 +146,7 @@ i, em { font-style: italic }
     width: 1024px;
 	padding-left: 30px;
 	padding-right: 30px;
-
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing:    border-box;
-    -ms-box-sizing:     border-box;
-    -o-box-sizing:      border-box;
-    box-sizing:         border-box;
+    box-sizing: border-box;
 }
 
 /*
@@ -170,13 +156,8 @@ i, em { font-style: italic }
 */
 .impress-enabled .step {
     margin: 0;
-    opacity: 0.3;
-
-    -webkit-transition: opacity 1s;
-    -moz-transition:    opacity 1s;
-    -ms-transition:     opacity 1s;
-    -o-transition:      opacity 1s;
-    transition:         opacity 1s;
+    opacity: 0.3;	
+    transition: opacity 1s;
 }
 
 .impress-enabled .sectionTitle, .impress-enabled .overlay { opacity: 0.0 }
@@ -214,6 +195,7 @@ i, em { font-style: italic }
 	background-color: white;
 	border-left: 2px solid rgb(122, 181, 22); /* color: Pantone 369 */
 	border-right: 2px solid rgb(122, 181, 22); /* color: Pantone 369 */
+	z-index: 1000000; /* this elements are in front of all other elements (z-index != data-z) */
 }
 
 .sectionTitle {
@@ -439,23 +421,11 @@ dd {
 	On one slide I want to rotate an image. This will happen with a 3s delay.
 */
 .present .rotate270 {
-	-webkit-transform: rotate(270deg) scale(0.75, 1.5);
-	-moz-transform: rotate(270deg) scale(0.75, 1.5);
-	-ms-transform: rotate(270deg) scale(0.75, 1.5);
-	-o-transform: rotate(270deg) scale(0.75, 1.5);
 	transform: rotate(270deg) scale(0.75, 1.5);
 }
 
 .rotate270 {
-	-webkit-transition: 1s;
-	-moz-transition: 1s;
-	-ms-transition: 1s;
-	-o-transition: 1s;
 	transition: 1s;
-	-webkit-transition-delay: 3s;
-	-moz-transition-delay: 3s;
-	-ms-transition-delay: 3s;
-	-o-transition-delay: 3s;
 	transition-delay: 3s;
 }
 
@@ -551,11 +521,7 @@ dd {
     /*
         ... and position it below the bottom of the screen (relative to it's fixed position)
     */
-    -webkit-transform: translateY(400px);
-    -moz-transform:    translateY(400px);
-    -ms-transform:     translateY(400px);
-    -o-transform:      translateY(400px);
-    transform:         translateY(400px);
+    transform: translateY(400px);
 
     /*
         Now let's imagine that the hint is visible and we want to fade it out and move out
@@ -567,11 +533,7 @@ dd {
 
         This way user will not see the hint moving down.
     */
-    -webkit-transition: opacity 1s, -webkit-transform 0.5s 1s;
-    -moz-transition:    opacity 1s,    -moz-transform 0.5s 1s;
-    -ms-transition:     opacity 1s,     -ms-transform 0.5s 1s;
-    -o-transition:      opacity 1s,      -o-transform 0.5s 1s;
-    transition:         opacity 1s,         transform 0.5s 1s;
+    transition: opacity 1s, transform 0.5s 1s;
 }
 
 /*
@@ -589,11 +551,7 @@ dd {
     */
     opacity: 1;
 
-    -webkit-transform: translateY(0px);
-    -moz-transform:    translateY(0px);
-    -ms-transform:     translateY(0px);
-    -o-transform:      translateY(0px);
-    transform:         translateY(0px);
+    transform: translateY(0px);
 
     /*
         Now for fade in transition we have the oposite situation from the one
@@ -603,11 +561,7 @@ dd {
         into its correct position and after that we fade it in with opacity
         transition.
     */
-    -webkit-transition: opacity 1s 5s, -webkit-transform 0.5s 4.5s;
-    -moz-transition:    opacity 1s 5s,    -moz-transform 0.5s 4.5s;
-    -ms-transition:     opacity 1s 5s,     -ms-transform 0.5s 4.5s;
-    -o-transition:      opacity 1s 5s,      -o-transform 0.5s 4.5s;
-    transition:         opacity 1s 5s,         transform 0.5s 4.5s;
+    transition: opacity 1s 5s, transform 0.5s 4.5s;
 }
 
 /*
@@ -631,7 +585,7 @@ dd {
 
     So use it wisely ... or don't use at all.
 */
-.impress-enabled          { pointer-events: none }
+.impress-enabled  { pointer-events: none }
 .impress-enabled #impress { pointer-events: auto }
 
 /*
