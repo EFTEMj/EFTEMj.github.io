@@ -340,24 +340,24 @@ u { color: 'umber' }
 			<div class="contend">
 				<table class="styled" style="font-size: 20px">
 					<thead><td>Dispersive coordinates</td><td>Selective windows</td></thead>
-					<tr><td rowspan="3">x, y (space coordinates)</td><td>ΔA (specimen area)</td></tr>
+					<tr><td rowspan="3"><span class="color-delayed">x</span>, y (space coordinates)</td><td>ΔA (specimen area)</td></tr>
 					<tr><td>d (diameter of selected area)</td></tr>
-					<tr><td>Δy (width of slit parallel to x)</td></tr>
-					<tr><td>ΔE (energy loss)</td><td>ΔW (energy window)</td></tr>
+					<tr><td><span class="color-delayed">Δy</span> (width of slit parallel to x)</td></tr>
+					<tr><td><span class="color-delayed">ΔE</span> (energy loss)</td><td>ΔW (energy window)</td></tr>
 				</table>
 				<table class="styled" style="font-size: 20px">
 					<thead><td>Mode</td><td>I (dispersive/selective)</td></thead>
 					<tr><td>ESI (electron spectroscopic imaging)</td><td>I(x, y/ΔW)</td></tr>
 					<tr><td colspan="2">EELS (electron energy-loss spectroscopy)</td></tr>
 					<tr><td class="right">Spectrum mode</td><td>I(ΔE/ΔA)</td></tr>
-					<tr><td class="right">Space-dispersive mode</td><td>I(x, ΔE/Δy)</td></tr>
+					<tr class="color-delayed"><td class="right">Space-dispersive mode</td><td>I(x, ΔE/Δy)</td></tr>
 				</table>
 			</div>
 		</div>
 
 		<div class="step slide" data-x="2400" data-y="1000">
 			<div class="head">
-				ESI data cube
+				For comparison - ESI data cube
 			</div>
 			<div class="contend">
 				<img size="100%" src="Daten/Cube_ESI.svg" />
@@ -374,7 +374,7 @@ u { color: 'umber' }
 
 		<div class="step slide" data-x="3600" data-y="1000">
 			<div class="head">
-				EELS data cube
+				For comparison - EELS data cube
 			</div>
 			<div class="contend">
 				<img size="100%" src="Daten/Cube_EELS.svg" />
@@ -409,11 +409,19 @@ u { color: 'umber' }
 		
 		<div class="step slide" data-x="6000" data-y="1000">
 			<div class="head">
-				SR-EELS - field of view
+				SR-EELS - first impression
 			</div>
 			<div class="contend">
-				<img size="100%" src="Daten/SR-EELS_default.svg" />
-				<p>By default, only up to 25% of our camera area is used.</p>
+				<table width="100%">
+					<tr>
+						<td><dt><img src="Bilder/TEM_FeCr.png" width="100%" /></dt><dd>conventional TEM</dd></td>
+						<td><dt><img src="Bilder/SR-EELS_0%.png" width="100%" /></dt><dd>SR-EELS (~475eV to ~750eV)</dd></td>
+					</tr>
+				</table>
+				<ul>
+					<li>By default, only up to 25% of our camera area is used. The shown spectrum magnification (SpecMag) results in only ~8%.</li>
+					<li>How can we increase the lateral extend?</li>
+				</ul>
 			</div>
 		</div>
 		
@@ -422,7 +430,7 @@ u { color: 'umber' }
 				SR-EELS - manipulating the magnification
 			</div>
 			<div class="contend">
-				<p>How to manipulate the magnification of the SR-EELS data-set?</p>
+				<p>How can we increase the lateral extend?</p>
 				<img size="100%" src="Daten/Schema_EELS.svg" />
 				<ul>
 					<li><strong>projective I</strong> controls the lateral resolution (nm/px)<br />
@@ -462,6 +470,9 @@ u { color: 'umber' }
 			</div>
 			<div class="contend">
 				<img size="100%" src="Bilder/SpecMag.png" />
+				<ul>
+					<li>The energy range of a single SR-EELS image</li>
+				</ul>
 			</div>
 		</div>
 
@@ -472,6 +483,9 @@ u { color: 'umber' }
 			</div>
 			<div class="contend">
 				<img size="100%" src="Bilder/SpecMag_widthZLP.png" />
+				<ul>
+					<li>Without touching the energy filter, there is only a limited number of lateral channels (up to ~1000 for binning 1).</li>
+				</ul>
 			</div>
 		</div>
 
@@ -508,25 +522,27 @@ u { color: 'umber' }
 
 		<div class="step slide" data-x="9600" data-y="1500">
 			<div class="head">
-				EFA - Examples
+				EFA - in the field
 			</div>
 			<div class="contend">
 				<table class="nomargin">
 					<tr>
-						<td><dt><img src="Bilder/EFA_QSinK7=0.png" width="100%"/></dt><dd>SpecMag=315 and QSinK7=0%</dd></td>
-						<td><dt><img src="Bilder/EFA_QSinK7=-11.png" width="100%"/></dt><dd>SpecMag=315 and QSinK7=-11%</dd></td>
+						<td><dt><img src="Bilder/SR-EELS_0%.png" width="100%" /></dt><dd>SpecMag=100 and QSinK7=0%</dd></td>
+						<td><dt><img src="Bilder/SR-EELS_-36%.png" width="100%" /></dt><dd>SpecMag=100 and QSinK7=-36%</dd></td>
 					</tr>
 				</table>
-				<p>The optimized value of QSinK7 increases the lateral magnification by about 4 times. QSinK4 depends on QSinK7.</p>
+				<ul>
+					<li>The optimized value of QSinK7 increases the lateral magnification by about 10 times.</li>
+				</ul>
 			</div>
 		</div>
 
 <!--@NPPBookmarkAberrations-->
-		<div id="aberrations" class="step sectionTitle" data-x="0" data-y="2000">
+		<div id="aberrations" class="step sectionTitle" data-x="0" data-y="2500">
 			<h1>Aberrations</h1>
 		</div>
 		
-		<div class="step slide title" data-x="0" data-y="2000">
+		<div class="step slide title" data-x="0" data-y="2500">
 			<div class="head">
 				Aberrations
 			</div>
@@ -535,7 +551,7 @@ u { color: 'umber' }
 					<li>The lateral extend decreases with increasing energy loss
 						<ul>
 							<li>This aberration is visible at all previous images</li>
-							<li>Described by a polynomial of 2nd degree</li>
+							<li>Described by a polynomial of 2nd (3rd) degree</li>
 						</ul>
 					</li>
 				</ul>
@@ -549,12 +565,12 @@ u { color: 'umber' }
 					<tr><td style="padding-top: 20px; font-size: 60%;" colspan="2">(This plots were automatically created by <a href="https://github.com/EFTEMj/EFTEMj/blob/master/Scripts%2BMacros/SR-EELS_characterisation.ijm">SR-EELS_characterisation.ijm</a> and they are only used to check the tabulated results.)</td></tr>
 				</table>
 				<ul>
-					<li>To be continued ...</li>
+					<li>How can we characterise the aberrations?</li>
 				</ul>
 			</div>
 		</div>
 
-		<div class="step slide title" data-x="1200" data-y="2000" data-z="0">
+		<div class="step slide title" data-x="1200" data-y="2500" data-z="0">
 			<div class="head">
 				Aberrations - Method of characterization
 			</div>
@@ -563,45 +579,50 @@ u { color: 'umber' }
 			</div>
 		</div>
 
-		<div class="step slide" data-x="1200" data-y="1500" data-z="1000">
+		<div class="step slide" data-x="2400" data-y="2500">
 			<div class="head">
 				Aberrations - Method of characterization
 			</div>
 			<div class="contend">
 				<dt><img size="100%" src="Bilder/characterization_marked_montage.png" /></dt>
-				<dd>1024px by 1024px sections of 4096px by 4096px images.<br />The marks at the borders and the centre of the signal were automatically created by <a href="https://github.com/EFTEMj/EFTEMj/blob/master/Scripts%2BMacros/SR-EELS_characterisation.ijm">SR-EELS_characterisation.ijm</a>.</dd>
-				<p>The ImageJ macro uses a combination of a Gaussian fit and the build-in threshold routine to detect the borders of the signal. At the given example 64 energy channels are <a href="">"binned"</a> for more reliable results.</p>
+				<dd>1024px by 1024px excerpts of 4096px by 4096px images.<br />The red line divedes the images into equally sized sections.<br />The marks at the borders and the centre of the signal were automatically created by <a href="https://github.com/EFTEMj/EFTEMj/blob/master/Scripts%2BMacros/SR-EELS_characterisation.ijm">SR-EELS_characterisation.ijm</a>.</dd>
+				<ul>
+					<li>Detection of the spectrum borders and the centres.</li>
+					<li>For intervals of 64 energy channels (adjustable).</li>
+					<li>The ImageJ macro uses a combination of a Gaussian fit and the build-in threshold routine.</li>
+				</ul>
 			</div>
 		</div>
 
-		<div class="step slide" data-x="1800" data-y="1250" data-z="1500" data-scale="0.5">
+		<div class="step slide" data-x="3600" data-y="2500">
 			<div class="head">
 				Aberrations - Method of characterization
 			</div>
 			<div class="contend">
 <pre class="prettyprint linenums">
-"y-pos"		"x-pos"		"left"	"right"	"width"		"right-left"
-287.268544656	2073.198497962	2027	2119	92.40625		92
-351.320644408	2072.148283952	2026	2117	91.859375	91
-415.333656825	2071.055050554	2025	2116	91.234375	91
-479.405808971	2069.943503637	2024	2114	90.046875	90
-543.446612238	2068.870190755	2024	2113	89.21875		89
-607.375873543	2067.87358088	2023	2111	88.09375		88
-671.393477567	2066.938270344	2023	2110	87.6875		87
-735.43223332	2066.045941075	2022	2108	86.015625	86
-799.484300885	2065.08104012	2022	2107	85.234375	85
-863.45281401	2064.225598582	2021	2106	84.546875	85
-927.518424668	2063.320875348	2021	2105	84.234375	84
-991.61449526	2062.567051694	2021	2103	82.453125	82
-1055.533906673	2061.728915286	2020	2102	81.5		82
-1119.467179822	2061.198212746	2020	2101	81.015625	81
-1183.610286657	2060.351984598	2020	2100	80.375		80
+y-pos;x-pos;left;right;width;right-left
+287.268;2073.198;2027;2119;92.406;92
+351.320;2072.148;2026;2117;91.859;91
+415.333;2071.055;2025;2116;91.234;91
+479.405;2069.943;2024;2114;90.046;90
+543.446;2068.870;2024;2113;89.218;89
+607.375;2067.873;2023;2111;88.093;88
+671.393;2066.938;2023;2110;87.687;87
+735.432;2066.045;2022;2108;86.015;86
+799.484;2065.081;2022;2107;85.234;85
+863.452;2064.225;2021;2106;84.546;85
+927.518;2063.320;2021;2105;84.234;84
+991.614;2062.567;2021;2103;82.453;82
+1055.533;2061.728;2020;2102;81.500;82
 ...
 </pre>
+			<ul>
+				<li>The results are saved in files that look like this.</li>
+			</ul>
 			</div>
 		</div>
 
-		<div class="step slide" data-x="2400" data-y="1500" data-z="1000">
+		<div class="step slide" data-x="4800" data-y="2500">
 			<div class="head">
 				Aberrations - 3D-visualization
 			</div>
@@ -610,8 +631,17 @@ u { color: 'umber' }
 				<dd style="margin-top: -40px">$$h(y) = a\cdot y^2 + b\cdot y + c$$</dd>
 			</div>
 		</div>
+		
+		<div class="step overlay" data-x="4800" data-y="2500">
+			<div class="contend">
+				<ul>
+					<li>There is not only a decrease in width with increasing energy loss.</li>
+					<li>The width decreases on the lateral axis, too.
+				</ul>
+			</div>
+		</div>
 
-		<div class="step slide" data-x="2400" data-y="2000" data-z="0">
+		<div class="step slide" data-x="6000" data-y="2500" data-z="0">
 			<div class="head">
 				Aberrations - 3D-visualization
 			</div>
@@ -620,16 +650,22 @@ u { color: 'umber' }
 				<dd style="margin-top: -50px">$$f(x,y) = \sum^2_{i,j=0}a_{ij}\cdot x^i y^j$$</dd>
 			</div>
 		</div>
+		
+		<div class="step overlay" data-x="6000" data-y="2500">
+			<div class="contend">
+				<p>$$f(x,y) = \sum^2_{i,j=0}a_{ij}\cdot x^i y^j$$ fits nearly perfect.</p>
+			</div>
+		</div>
 
-		<div class="step slide" data-x="3600" data-y="2000">
+		<div class="step slide" data-x="7200" data-y="2500">
 			<div class="head">
-				Aberrations
+				Aberrations - interim conclusion
 			</div>
 			<div class="contend">
 				<ul>
 					<li>The lateral extend decreases with increasing energy loss
 						<ul>
-							<li>This aberration is visible at all previous images</li>
+							<li>This aberration attracts attention at all SR-EELS images</li>
 							<li>Described by a polynomial of 2nd degree</li>
 						</ul>
 					</li>
@@ -645,8 +681,12 @@ u { color: 'umber' }
 				<dd>Width vs lateral position for \(\Delta E = 0\)</dd>
 			</div>
 		</div>
+		
+		<div class="step sectionTitle" data-x="8400" data-y="2500">
+			<h1>The following slides will be updated soon!</h1>
+		</div>
 
-		<div class="step slide" data-x="4800" data-y="2000">
+		<div class="step slide" data-x="8400" data-y="2500">
 			<div class="head">
 				Aberrations - 2D-visualization
 			</div>
@@ -661,7 +701,7 @@ u { color: 'umber' }
 			</div>
 		</div>
 
-		<div class="step slide" data-x="6000" data-y="2000">
+		<div class="step slide" data-x="9600" data-y="2500">
 			<div class="head">
 				Aberrations - 2D-visualization
 			</div>
@@ -672,11 +712,11 @@ u { color: 'umber' }
 		</div>
 
 <!--@NPPBookmarkCorrection-->
-		<div id="correction" class="step sectionTitle" data-x="0" data-y="3000">
+		<div id="correction" class="step sectionTitle" data-x="0" data-y="3500">
 			<h1>Correction by image processing</h1>
 		</div>
 
-		<div class="step slide title" data-x="0" data-y="3000">
+		<div class="step slide title" data-x="0" data-y="3500">
 			<div class="head">
 				Correction - Remark
 			</div>
@@ -685,7 +725,7 @@ u { color: 'umber' }
 			</div>
 		</div>
 
-		<div class="step slide" data-x="1200" data-y="3000">
+		<div class="step slide" data-x="1200" data-y="3500">
 			<div class="head">
 				Correction - Overview
 			</div>
@@ -702,7 +742,7 @@ u { color: 'umber' }
 			</div>
 		</div>
 
-		<div class="step slide" data-x="2400" data-y="3000">
+		<div class="step slide" data-x="2400" data-y="3500">
 			<div class="head">
 				Correction - The \(\Delta E\)-axis (1)
 			</div>
@@ -715,7 +755,7 @@ u { color: 'umber' }
 			</div>
 		</div>
 
-		<div class="step slide overlay" data-x="2400" data-y="3000" data-z="1">
+		<div class="step slide overlay" data-x="2400" data-y="3500" data-z="1">
 			<div class="head">
 				Correction - The  \(\Delta E\)-axis (2)
 			</div>
@@ -726,7 +766,7 @@ u { color: 'umber' }
 			</div>
 		</div>
 
-		<div class="step slide overlay" data-x="2400" data-y="3000" data-z="2">
+		<div class="step slide overlay" data-x="2400" data-y="3500" data-z="2">
 			<div class="head">
 				Correction - The  \(\Delta E\)-axis (3)
 			</div>
@@ -737,7 +777,7 @@ u { color: 'umber' }
 			</div>
 		</div>
 
-		<div class="step slide" data-x="3600" data-y="3000">
+		<div class="step slide" data-x="3600" data-y="3500">
 			<div class="head">
 				Correction - Full transformation
 			</div>
@@ -751,7 +791,7 @@ u { color: 'umber' }
 			</div>
 		</div>
 
-		<div class="step slide" data-x="4800" data-y="3000">
+		<div class="step slide" data-x="4800" data-y="3500">
 			<div class="head">
 				Correction - Example (QSinK7 = 0%)
 			</div>
@@ -763,7 +803,7 @@ u { color: 'umber' }
 			</div>
 		</div>
 
-		<div class="step slide" data-x="6000" data-y="3000">
+		<div class="step slide" data-x="6000" data-y="3500">
 			<div class="head">
 				Correction - Example (QSinK7 = -11%)
 			</div>
@@ -775,7 +815,7 @@ u { color: 'umber' }
 			</div>
 		</div>
 
-		<div class="step slide" data-x="7200" data-y="3000">
+		<div class="step slide" data-x="7200" data-y="3500">
 			<div class="head">
 				Correction - Correct the Intensity
 			</div>
@@ -793,7 +833,7 @@ u { color: 'umber' }
 			</div>
 		</div>
 
-		<div id="summary" class="step slide" data-x="0" data-y="4000">
+		<div id="summary" class="step slide" data-x="0" data-y="4500">
 			<div class="head">
 				Summary
 			</div>
@@ -807,7 +847,7 @@ u { color: 'umber' }
 			</div>
 		</div>
 
-		<div id="outlook" class="step slide" data-x="1200" data-y="4000">
+		<div id="outlook" class="step slide" data-x="1200" data-y="4500">
 			<div class="head">
 				Outlook
 			</div>
@@ -821,7 +861,7 @@ u { color: 'umber' }
 			</div>
 		</div>
 
-		<div class="step" data-x="2400" data-y="4000">
+		<div class="step" data-x="2400" data-y="4500">
 			<p style="font-size: 200%">Thank you for your attention!</p>
 		</div>
 

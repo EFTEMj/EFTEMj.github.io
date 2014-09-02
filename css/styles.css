@@ -74,6 +74,8 @@ table {
     border-spacing: 0;
 }
 
+table:not(.styled) { text-align: center }
+
 /*
     Now here is when interesting things start to appear.
 
@@ -415,6 +417,16 @@ dd {
 	font-size: 35px;
 	letter-spacing: -3px;
 	text-align: center;
+}
+
+/*
+	"Dispersive coordinates and selective windows"
+*/
+
+.active .color-delayed {
+	color: rgb(255, 0, 0);
+	transition-property: color;
+	transition-delay: 3s;
 }
 
 /*
