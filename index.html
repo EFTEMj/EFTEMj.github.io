@@ -206,7 +206,7 @@
 
 		<div class="slide step" data-x="0" data-y="-1000">
 			<div class="head">
-				impress.js
+				impress.js - overview
 			</div>
 			<div class="contend">
 				<p>This presentation was created by using <a href="https://github.com/bartaz/impress.js/">impress.js</a>.</p>
@@ -240,7 +240,7 @@
 
 		<div class="slide step" data-x="2400" data-y="-1000">
 			<div class="head">
-				More examples using impress.js
+				impress.js - More examples
 			</div>
 			<div class="contend">
 				<ul>
@@ -256,7 +256,7 @@
 
 		<div class="step slide" data-x="3600" data-y="-1000">
 			<div class="head">
-				LaTeX-formulas
+				impress.js - LaTeX-formulas
 			</div>
 			<div class="contend">
 				<p>It is even possible to use LaTeX code to create formulas.
@@ -271,7 +271,7 @@
 
 		<div class="step slide" data-x="4800" data-y="-1000">
 			<div class="head">
-				Source-code with syntax highlighting
+				impress.js - Source-code with syntax highlighting
 			</div>
 			<div class="contend">
 				<pre class="prettyprint linenums" data-lang="javascript">
@@ -295,7 +295,7 @@ u { color: 'umber' }
 
 		<div class="step slide" data-x="6000" data-y="-1000">
 			<div class="head">
-				Include a website using an iframe
+				impress.js - Include a website using an iframe
 			</div>
 			<div class="contend">
 				<iframe size="100%" src='http://imagej.nih.gov/ij/'></iframe>
@@ -304,7 +304,7 @@ u { color: 'umber' }
 
 		<div class="step slide" data-x="7200" data-y="-1000">
 			<div class="head">
-				You can even watch a video
+				impress.js - You can even watch a video
 			</div>
 			<div class="contend">
 				<iframe src="http://www.youtube.com/embed/CxmvFYp8EtU" width="640px" height="400px"></iframe>
@@ -319,7 +319,7 @@ u { color: 'umber' }
 
 		<div class="step slide" data-x="0" data-y="1000">
 			<div class="head">
-				How to use an imaging filter
+				Dispersive coordinates and selective windows (1)
 			</div>
 			<div class="contend">
 				<div class="box">
@@ -335,7 +335,7 @@ u { color: 'umber' }
 
 		<div class="step slide" data-x="1200" data-y="1000">
 			<div class="head">
-				Dispersive coordinates and selective windows
+				Dispersive coordinates and selective windows (2)
 			</div>
 			<div class="contend">
 				<table class="styled" style="font-size: 20px">
@@ -398,6 +398,7 @@ u { color: 'umber' }
 				<img size="100%" src="Daten/Cube_SR-EELS.svg" />
 			</div>
 		</div>
+		
 		<div class="step overlay" data-x="4800" data-y="1000">
 			<ul>
 				<li>high number of energy channels</li>
@@ -569,23 +570,32 @@ u { color: 'umber' }
 				</ul>
 			</div>
 		</div>
+		
+		<div class="step overlay" data-x="1200" data-y="2500">
+			<ol>
+				<li>Select a small aperture at the filter entrance plane.</li>
+				<li>Shift the aperture perpendicular to the energy dispersive direction.</li>
+				<li>Record a SR-EELS image at several positions of the aperture.</li>
+			</ol>
+		</div>
 
 		<div class="step slide title" data-x="1200" data-y="2500" data-z="0">
 			<div class="head">
-				Aberrations - Method of characterization
+				Aberrations - Method of characterization (1)
 			</div>
 			<div class="contend">
 				<img size="100%" src="Bilder/characterization_montage.png" />
 			</div>
+			<div id="characterization_hoover">The red line bisects the camera area.</div>
 		</div>
 
 		<div class="step slide" data-x="2400" data-y="2500">
 			<div class="head">
-				Aberrations - Method of characterization
+				Aberrations - Method of characterization (2)
 			</div>
 			<div class="contend">
 				<dt><img size="100%" src="Bilder/characterization_marked_montage.png" /></dt>
-				<dd>1024px by 1024px excerpts of 4096px by 4096px images.<br />The red line divedes the images into equally sized sections.<br />The marks at the borders and the centre of the signal were automatically created by <a href="https://github.com/EFTEMj/EFTEMj/blob/master/Scripts%2BMacros/SR-EELS_characterisation.ijm">SR-EELS_characterisation.ijm</a>.</dd>
+				<dd>1024px by 1024px excerpts of 4096px by 4096px images.<br />The red line bisects the camera area.<br />The marks at the borders and the centre of the signal were automatically created by <a href="https://github.com/EFTEMj/EFTEMj/blob/master/Scripts%2BMacros/SR-EELS_characterisation.ijm">SR-EELS_characterisation.ijm</a>.</dd>
 				<ul>
 					<li>Detection of the spectrum borders and the centres.</li>
 					<li>For intervals of 64 energy channels (adjustable).</li>
@@ -600,7 +610,7 @@ u { color: 'umber' }
 			</div>
 			<div class="contend">
 <pre class="prettyprint linenums">
-y-pos;x-pos;left;right;width;right-left
+ΔE-pos;x-pos;top;bottom;width;bottom-top
 287.268;2073.198;2027;2119;92.406;92
 351.320;2072.148;2026;2117;91.859;91
 415.333;2071.055;2025;2116;91.234;91
@@ -628,7 +638,7 @@ y-pos;x-pos;left;right;width;right-left
 			</div>
 			<div class="contend">
 				<dt><img height="625px" src="Bilder/3D_h(y)_SpecMag=315_QSinK7=0_225eV.png"/></dt>
-				<dd style="margin-top: -40px">$$h(y) = a\cdot y^2 + b\cdot y + c$$</dd>
+				<dd style="margin-top: -40px">$$w(x,y) = h(y) = a\cdot y^2 + b\cdot y + c$$</dd>
 			</div>
 		</div>
 		
@@ -647,13 +657,13 @@ y-pos;x-pos;left;right;width;right-left
 			</div>
 			<div class="contend">
 				<dt><img height="625px" src="Bilder/3D_f(x,y)_SpecMag=315_QSinK7=0_225eV.png"/></dt>
-				<dd style="margin-top: -50px">$$f(x,y) = \sum^2_{i,j=0}a_{ij}\cdot x^i y^j$$</dd>
+				<dd style="margin-top: -50px">$$w(x,y) = f(x,y) = \sum^2_{i,j=0}a_{ij}\cdot x^i y^j$$</dd>
 			</div>
 		</div>
 		
 		<div class="step overlay" data-x="6000" data-y="2500">
 			<div class="contend">
-				<p>$$f(x,y) = \sum^2_{i,j=0}a_{ij}\cdot x^i y^j$$ fits nearly perfect.</p>
+				<p>$$w(x,y) = \sum^2_{i,j=0}a_{ij}\cdot x^i y^j$$ fits nearly perfect.</p>
 			</div>
 		</div>
 
@@ -681,23 +691,20 @@ y-pos;x-pos;left;right;width;right-left
 				<dd>Width vs lateral position for \(\Delta E = 0\)</dd>
 			</div>
 		</div>
-		
-		<div class="step sectionTitle" data-x="8400" data-y="2500">
-			<h1>The following slides will be updated soon!</h1>
-		</div>
 
 		<div class="step slide" data-x="8400" data-y="2500">
 			<div class="head">
 				Aberrations - 2D-visualization
 			</div>
 			<div class="contend">
-				<p>\(\Delta E\) represents the energy offset at the given dataset. Electrons that traverse the energy filter at an optimal ray pass will have an energy offset of \(\Delta E = 0\).</p>
-				<p>\(y_n\) is the position, where the polynomial \(f_n\) intersects the axis with \(\Delta E = 0\).</p>
-				<p>$$ \Rightarrow f_n(0) = y_n$$</p>
-				<div class="linebehind"></div>
-				<p>$$f_n(\Delta E) = \sum^2_{i,j=0}a_{ij}\cdot y_n^j\cdot \Delta E^i$$</p>
-				<p style="text-align: center;">with \(a_i = a_{i0} + a_{i1}\cdot y_n + a_{i2}\cdot y_n^2\)</p>
-				<p>$$\Rightarrow f_n(\Delta E) = \sum^2_{i=0}a_i\cdot \Delta E^i$$</p>
+				<ul>
+					<li>We can try to present the results using only a 2D graph. This represents the aberration on the camera.</li>
+					<li>A single function is used to fit all spectrum borders:<br />
+					$$x(\Delta E) = \sum^2_{i,j=0}a_{ij}\cdot\Delta E^i\cdot x_0^j,$$<br />
+					where \(x_0\) is the x-value of a spectrum border at \(\Delta E=0\).</li>
+					<li>Mathematically this is a function series:<br />
+					$$f:\mathit{D}\ \mathsf{x}\ \mathbb{N} \to \mathit{Z}, \quad (x,n) \mapsto f_n(x).$$</li>
+				</ul>
 			</div>
 		</div>
 
@@ -706,8 +713,19 @@ y-pos;x-pos;left;right;width;right-left
 				Aberrations - 2D-visualization
 			</div>
 			<div class="contend">
-				<dt><img height="600px" src="Bilder/Borders_SpecMag=315_QSinK7=0_225eV.png"/></dt>
-				<dd style="margin-top: -20px">$$f_n(\Delta E) = \sum^2_{i,j=0}a_{ij}\cdot y_n^j\cdot \Delta E^i$$</dd>
+				<dt><img height="600px" src="Bilder/borders_0%.svg"/></dt>
+				<dd style="margin-top: -20px">$$x(\Delta E) = \sum^2_{i,j=0}a_{ij}\cdot\Delta E^i\cdot x_0^j $$</dd>
+			</div>
+		</div>
+
+		<div class="step slide" data-x="10800" data-y="2500">
+			<div class="head">
+				Aberrations - conclusion
+			</div>
+			<div class="contend">
+				<ul>
+					<li></li>
+				</ul>
 			</div>
 		</div>
 
@@ -716,16 +734,29 @@ y-pos;x-pos;left;right;width;right-left
 			<h1>Correction by image processing</h1>
 		</div>
 
-		<div class="step slide title" data-x="0" data-y="3500">
+		<div class="step slide" data-x="0" data-y="3500">
 			<div class="head">
-				Correction - Remark
+				Correction - Combining \(x(\Delta E)\) and \(w(\Delta E, x)\)
 			</div>
 			<div class="contend">
-				<img class="rotate270" height="650px" src="Bilder/Borders_SpecMag=315_QSinK7=0_225eV.png"/>
+				<ul>
+					<li></li>
+				</ul>
 			</div>
 		</div>
 
 		<div class="step slide" data-x="1200" data-y="3500">
+			<div class="head">
+				Correction - 2D-visualization
+			</div>
+			<div class="contend">
+				<dt><img height="600px" src="Bilder/distortion_0%.svg"/></dt>
+				<dd style="margin-top: -20px">$$x(\Delta E) = \sum^2_{i,j=0}a_{ij}\cdot\Delta E^i\cdot x(w)_0^j $$</dd>
+			</div>
+		</div>
+
+		<!-- <p>To address the decreasing width of the spectrum with increasing lateral distance to \(x=0\), we calculate \(x\) depending on the width of the spectrum.</p> -->
+		<div class="step slide" data-x="2400" data-y="3500">
 			<div class="head">
 				Correction - Overview
 			</div>
@@ -742,7 +773,7 @@ y-pos;x-pos;left;right;width;right-left
 			</div>
 		</div>
 
-		<div class="step slide" data-x="2400" data-y="3500">
+		<div class="step slide" data-x="3600" data-y="3500">
 			<div class="head">
 				Correction - The \(\Delta E\)-axis (1)
 			</div>
@@ -755,7 +786,7 @@ y-pos;x-pos;left;right;width;right-left
 			</div>
 		</div>
 
-		<div class="step slide overlay" data-x="2400" data-y="3500" data-z="1">
+		<div class="step slide overlay" data-x="4800" data-y="3500" data-z="1">
 			<div class="head">
 				Correction - The  \(\Delta E\)-axis (2)
 			</div>
@@ -766,7 +797,7 @@ y-pos;x-pos;left;right;width;right-left
 			</div>
 		</div>
 
-		<div class="step slide overlay" data-x="2400" data-y="3500" data-z="2">
+		<div class="step slide overlay" data-x="4800" data-y="3500" data-z="2">
 			<div class="head">
 				Correction - The  \(\Delta E\)-axis (3)
 			</div>
@@ -777,7 +808,7 @@ y-pos;x-pos;left;right;width;right-left
 			</div>
 		</div>
 
-		<div class="step slide" data-x="3600" data-y="3500">
+		<div class="step slide" data-x="5000" data-y="3500">
 			<div class="head">
 				Correction - Full transformation
 			</div>
@@ -791,7 +822,7 @@ y-pos;x-pos;left;right;width;right-left
 			</div>
 		</div>
 
-		<div class="step slide" data-x="4800" data-y="3500">
+		<div class="step slide" data-x="6200" data-y="3500">
 			<div class="head">
 				Correction - Example (QSinK7 = 0%)
 			</div>
@@ -803,7 +834,7 @@ y-pos;x-pos;left;right;width;right-left
 			</div>
 		</div>
 
-		<div class="step slide" data-x="6000" data-y="3500">
+		<div class="step slide" data-x="7400" data-y="3500">
 			<div class="head">
 				Correction - Example (QSinK7 = -11%)
 			</div>
@@ -815,7 +846,7 @@ y-pos;x-pos;left;right;width;right-left
 			</div>
 		</div>
 
-		<div class="step slide" data-x="7200" data-y="3500">
+		<div class="step slide" data-x="8600" data-y="3500">
 			<div class="head">
 				Correction - Correct the Intensity
 			</div>
@@ -922,7 +953,7 @@ if ("ontouchstart" in document.documentElement) {
 	I use MathJax to create formulas with LaTeX-code and google code prettify to have nice looking source code.
 -->
 <script type="text/javascript"
-  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+			src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 

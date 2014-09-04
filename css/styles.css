@@ -74,6 +74,8 @@ table {
     border-spacing: 0;
 }
 
+td { padding: 5px }
+
 table:not(.styled) { text-align: center }
 
 /*
@@ -164,6 +166,8 @@ i, em { font-style: italic }
 
 .impress-enabled .sectionTitle, .impress-enabled .overlay { opacity: 0.0 }
 .impress-enabled .step.active { opacity: 1 }
+
+.invis { opacity: 0.0 }
 
 /*
     These 'slide' step styles were heavily inspired by HTML5 Slides:
@@ -427,6 +431,24 @@ dd {
 	color: rgb(255, 0, 0);
 	transition-property: color;
 	transition-delay: 3s;
+}
+
+/*
+	"Aberrations - Method of characterization (1)"
+*/
+
+.active #characterization_hoover {
+	position: fixed;
+	top: 50%;
+	left: 25%;
+	z-index: 1;
+	opacity: 0.0;
+	background-color: rgba(255, 255, 255, 1);
+	width: 50%;
+	text-align: center;
+	transition-property: opacity;
+	transition-delay: 5s;
+	transition-duration: 1s;
 }
 
 /*
