@@ -86,9 +86,9 @@ table:not(.styled) { text-align: center }
     want to leave anybody behind.
 */
 body {
-    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-family: Verdana,Helvetica,Arial,sans-serif;
 	font-weight: normal;
-    font-size: 30px;
+    font-size: 28px;
     line-height: 1.2;
     letter-spacing: -1px;
 	text-align: justify;
